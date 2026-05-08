@@ -12,7 +12,7 @@ import {
   Search as SearchIcon,
 } from '@material-ui/icons'
 import { echoHost } from 'utils/Hosts'
-import Div100vh from 'react-div-100vh'
+
 import axios from 'axios'
 import TorrentList from 'components/TorrentList'
 import DonateSnackbar from 'components/Donate'
@@ -72,8 +72,7 @@ export default function App() {
           >
             <CssBaseline />
 
-            {/* Div100vh - iOS WebKit fix  */}
-            <Div100vh>
+            <div style={{ height: '100dvh' }}>
               <AppWrapper isDrawerOpen={isDrawerOpen}>
                 <AppHeader>
                   <StyledIconButton edge='start' color='inherit' onClick={() => setIsDrawerOpen(!isDrawerOpen)}>
@@ -172,7 +171,7 @@ export default function App() {
 
                 {snackbarIsClosed ? checkIsIOS() && !isStandaloneApp && <PWAInstallationGuide /> : <DonateSnackbar />}
               </AppWrapper>
-            </Div100vh>
+            </div>
           </StyledComponentsThemeProvider>
         </MuiThemeProvider>
       </DarkModeContext.Provider>
