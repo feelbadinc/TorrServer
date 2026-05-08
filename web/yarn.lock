@@ -3013,10 +3013,10 @@ parse-asn1@^5.0.0, parse-asn1@^5.1.9:
     pbkdf2 "^3.1.5"
     safe-buffer "^5.2.1"
 
-parse-torrent-title@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/parse-torrent-title/-/parse-torrent-title-1.4.0.tgz#0be712c3c0b92870cf38f74e73a2398382c0be79"
-  integrity sha512-/G0rQNeAUmNwB3QtyBJtNDAr1Q95Gg3wgwQ3dbYEkX8tOdkw5XmUS03O3+QqAV5hDNRVMatBG2fIoz+H/UMseQ==
+parse-torrent-title@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/parse-torrent-title/-/parse-torrent-title-3.0.1.tgz#fd9e8d62ecc4f54b3157ac8d42e91fdb29f8df10"
+  integrity sha512-RxSx53deKlA3oGKvt291//YtKPhVpMay0oug73So1W6074xGAI0XI53l1Lc0Cd7CUtMTUEwpeNUSkdaC0CCtKQ==
 
 parse-torrent@^9.1.5:
   version "9.1.5"
