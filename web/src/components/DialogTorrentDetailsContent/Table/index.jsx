@@ -1,7 +1,7 @@
 import React, { memo, useState } from 'react'
 import isEqual from 'lodash/isEqual'
 import { Button } from '@material-ui/core'
-import CopyToClipboard from 'react-copy-to-clipboard'
+
 import { useTranslation } from 'react-i18next'
 import ptt from 'parse-torrent-title'
 import { streamHost } from 'utils/Hosts'
@@ -109,11 +109,9 @@ const Table = memo(
                             </a>
                           )
                         )}
-                        <CopyToClipboard text={fullLink}>
-                          <Button variant='outlined' color='primary' size='small'>
-                            {t('CopyLink')}
-                          </Button>
-                        </CopyToClipboard>
+                        <Button variant='outlined' color='primary' size='small' onClick={() => navigator.clipboard.writeText(fullLink)}>
+                          {t('CopyLink')}
+                        </Button>
                         {isSupported && shouldShowOpenLink && (
                           <a style={{ textDecoration: 'none' }} href={link} target='_blank' rel='noreferrer'>
                             <Button style={{ width: '100%' }} variant='outlined' color='primary' size='small'>
@@ -212,11 +210,9 @@ const Table = memo(
                       </a>
                     )}
 
-                    <CopyToClipboard text={fullLink}>
-                      <Button variant='outlined' color='primary' size='small'>
-                        {t('CopyLink')}
-                      </Button>
-                    </CopyToClipboard>
+                    <Button variant='outlined' color='primary' size='small' onClick={() => navigator.clipboard.writeText(fullLink)}>
+                      {t('CopyLink')}
+                    </Button>
                   </div>
                 </ShortTable>
               )

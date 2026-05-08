@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { memo } from 'react'
 import { playlistTorrHost, torrentsHost, viewedHost } from 'utils/Hosts'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
+
 import { Button } from '@material-ui/core'
 import ptt from 'parse-torrent-title'
 import { useTranslation } from 'react-i18next'
@@ -74,11 +74,9 @@ const TorrentFunctions = memo(
               </Button>
             </a>
           )}
-          <CopyToClipboard text={magnet}>
-            <Button variant='contained' color='primary' size='large'>
-              {t('CopyHash')}
-            </Button>
-          </CopyToClipboard>
+          <Button variant='contained' color='primary' size='large' onClick={() => navigator.clipboard.writeText(magnet)}>
+            {t('CopyHash')}
+          </Button>
         </MainSectionButtonGroup>
       </>
     )
