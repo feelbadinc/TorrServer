@@ -77,7 +77,7 @@ export default function SearchDialog({ handleClose }) {
 
       const { data } = await axios.get(url, { params })
       setResults(data || [])
-    } catch (error) {
+    } catch (_) {
       setErrorMsg(t('Torznab.SearchFailed'))
     } finally {
       setLoading(false)
@@ -115,7 +115,7 @@ export default function SearchDialog({ handleClose }) {
         poster: poster || '',
       })
       setSuccessMsg(t('Torznab.TorrentAddedSuccessfully'))
-    } catch (error) {
+    } catch (_) {
       setErrorMsg(t('Torznab.FailedToAddTorrent'))
     } finally {
       setAdding(false)

@@ -106,9 +106,7 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
           const prefs = await response.json()
           setStorageSettings(prefs)
         }
-      } catch (_) {
-        // ignore
-      }
+      } catch {}
     }
     loadStorageSettings()
   }, [getApiUrl])

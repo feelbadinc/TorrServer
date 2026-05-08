@@ -21,7 +21,7 @@ const getTMDBSettings = async () => {
     const { data } = await axios.get(tmdbSettingsHost())
     tmdbSettingsCache = data
     return data
-  } catch (error) {
+  } catch (_) {
     return {
       APIKey: import.meta.env.VITE_TMDB_API_KEY || '',
       APIURL: 'https://api.themoviedb.org/3',
@@ -117,9 +117,7 @@ export const shortenTitleForPosterSearch = (fullTitle, opts = {}) => {
   try {
     const parsed = ptt.parse(base)
     if (parsed?.title && parsed.title.length <= maxLen + 15) base = parsed.title
-  } catch (_) {
-    // ignore
-  }
+  } catch {}
   const words = base.split(/\s+/).filter(Boolean)
   const byWords = words.slice(0, maxWords).join(' ')
   if (byWords.length <= maxLen) return byWords.trim()
