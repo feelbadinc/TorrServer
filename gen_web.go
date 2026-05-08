@@ -23,10 +23,10 @@ func main() {
 			return s == "--clean" || s == "-c"
 		}) {
 			// There are problems with running under windows
-			if err := run("rm", "-rf", "web/build"); err != nil {
+			if err := run("rm", "-rf", "web/dist"); err != nil {
 				if strings.Contains(err.Error(), "executable file not found") {
 					// Adding the ability to run on Windows with standard Go commands
-					if err := os.RemoveAll("web/build"); err != nil {
+					if err := os.RemoveAll("web/dist"); err != nil {
 						log.Default().Fatalln(err.Error())
 					}
 				} else {
@@ -39,7 +39,7 @@ func main() {
 		}
 	}
 
-	if _, err := os.Stat("web/build/static"); os.IsNotExist(err) {
+	if _, err := os.Stat("web/dist/assets"); os.IsNotExist(err) {
 		os.Chdir("web")
 		if err = run("yarn"); err != nil {
 			log.Default().Fatalln(err.Error())
@@ -50,7 +50,7 @@ func main() {
 		os.Chdir(dir)
 	}
 
-	compileHtml := "web/build/"
+	compileHtml := "web/dist/"
 	srcGo := "server/web/pages/"
 
 	// There are problems with running under windows
