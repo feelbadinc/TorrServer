@@ -201,7 +201,6 @@ export default function MultiAddDialog({ files, handleClose }) {
             const currentIndex = visibleIndex++
             return (
               <FileRow
-                // eslint-disable-next-line react/no-array-index-key
                 key={item.file.name + index}
                 file={item.file}
                 fileState={item}

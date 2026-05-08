@@ -31,7 +31,6 @@ export default function DonateDialog({ onClose }) {
         </ButtonGroup>
         {/* </ListItem> */}
         {/* <ListItem key='DonateForm'> */}
-        {/* eslint-disable-next-line react/no-danger */}
         {/* <div dangerouslySetInnerHTML={{ __html: donateFrame }} /> */}
         {/* </ListItem> */}
         {/* </List> */}

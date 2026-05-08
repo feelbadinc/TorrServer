@@ -106,8 +106,8 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
           const prefs = await response.json()
           setStorageSettings(prefs)
         }
-      } catch (error) {
-        // eslint-disable-line no-console
+      } catch (_) {
+        // ignore
       }
     }
     loadStorageSettings()
