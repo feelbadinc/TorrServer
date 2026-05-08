@@ -1,4 +1,3 @@
-import Measure from 'react-measure'
 import React, { useState, memo, useRef, useEffect, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import isEqual from 'lodash/isEqual'
@@ -12,12 +11,18 @@ import { createGradient, snakeSettings } from './snakeSettings'
 
 const TorrentCache = ({ cache, isMini, isSnakeDebugMode }) => {
   const { t } = useTranslation()
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-  const { width } = dimensions
+  const [width, setWidth] = useState(0)
+  const containerRef = useRef(null)
   const canvasRef = useRef(null)
   const ctxRef = useRef(null)
   const cacheMap = useCreateCacheMap(cache)
   const settingsTarget = isMini ? 'mini' : 'default'
+
+  useEffect(() => {
+    const observer = new ResizeObserver(([entry]) => setWidth(entry.contentRect.width))
+    if (containerRef.current) observer.observe(containerRef.current)
+    return () => observer.disconnect()
+  }, [])
   const { isDarkMode } = useContext(DarkModeContext)
   const theme = isDarkMode ? THEME_MODES.DARK : THEME_MODES.LIGHT
 
@@ -36,7 +41,7 @@ const TorrentCache = ({ cache, isMini, isSnakeDebugMode }) => {
   const canvasWidth = isMini ? width * 0.93 : width
 
   const pieceSizeWithGap = pieceSize + gapBetweenPieces
-  const piecesInOneRow = Math.floor(canvasWidth / pieceSizeWithGap)
+  const piecesInOneRow = Math.max(1, Math.floor(canvasWidth / pieceSizeWithGap))
 
   let shotCacheMap
   if (isMini) {
@@ -127,17 +132,13 @@ const TorrentCache = ({ cache, isMini, isSnakeDebugMode }) => {
   ])
 
   return (
-    <Measure bounds onResize={({ bounds }) => setDimensions(bounds)}>
-      {({ measureRef }) => (
-        <div style={{ display: 'flex', flexDirection: 'column' }} ref={measureRef}>
-          <SnakeWrapper themeType={theme} isMini={isMini}>
-            <canvas ref={canvasRef} />
-          </SnakeWrapper>
+    <div style={{ display: 'flex', flexDirection: 'column' }} ref={containerRef}>
+      <SnakeWrapper themeType={theme} isMini={isMini}>
+        <canvas ref={canvasRef} />
+      </SnakeWrapper>
 
-          {isMini && height >= cacheMaxHeight && <ScrollNotification>{t('ScrollDown')}</ScrollNotification>}
-        </div>
-      )}
-    </Measure>
+      {isMini && height >= cacheMaxHeight && <ScrollNotification>{t('ScrollDown')}</ScrollNotification>}
+    </div>
   )
 }
 
