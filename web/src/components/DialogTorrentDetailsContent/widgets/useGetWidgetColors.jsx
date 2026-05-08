@@ -1,5 +1,5 @@
 import { DarkModeContext } from 'components/App'
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { THEME_MODES } from 'style/materialUISetup'
 
 const { LIGHT, DARK } = THEME_MODES

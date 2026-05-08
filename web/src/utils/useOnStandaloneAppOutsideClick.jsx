@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { isStandaloneApp } from 'utils/Utils'
 
 export default function useOnStandaloneAppOutsideClick(onClickOutside) {

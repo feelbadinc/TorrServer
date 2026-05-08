@@ -57,7 +57,7 @@ export default [
       'no-unused-vars': ['warn', { vars: 'local', args: 'after-used', ignoreRestSiblings: true }],
       'react/prop-types': 0,
       'react/react-in-jsx-scope': 0,
-      'react/jsx-uses-react': 0,
+      'react/jsx-uses-react': 1,
       'react/require-default-props': 0,
       'react/jsx-props-no-spreading': 0,
     },
