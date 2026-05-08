@@ -5,7 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
-    "axios": "1.15.2",
+    "axios": "^1.16.0",
     "clsx": "^1.1.1",
     "i18next": "^20.3.1",
     "i18next-browser-languagedetector": "^6.1.8",
@@ -22,16 +22,14 @@
     "react-i18next": "^11.10.0",
     "react-measure": "^2.5.2",
     "react-query": "^3.39.3",
-    "react-scripts": "4.0.3",
     "react-swipeable-views": "^0.14.0",
     "styled-components": "^5.3.11",
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "lint": "eslint --ext .js,.jsx src --color",
     "fix": "yarn lint --fix"
   },
@@ -48,23 +46,17 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.23.0",
-    "@babel/core": "^7.23.3",
-    "@babel/plugin-proposal-class-properties": "^7.13.0",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@babel/plugin-transform-react-jsx": "^7.22.15",
-    "babel-minify": "^0.5.1",
-    "babel-preset-minify": "^0.5.1",
+    "@vitejs/plugin-react-swc": "^4.3.0",
     "eslint": "^7.27.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.10.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "prettier": "^2.8.8"
+    "prettier": "^2.8.8",
+    "vite": "6.4.2",
+    "vite-plugin-node-polyfills": "^0.26.0"
   },
   "description": "",
-  "main": "gulpfile.js",
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "homepage": "./"
+  "license": "ISC"
 }
