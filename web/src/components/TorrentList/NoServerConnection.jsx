@@ -1,3 +1,4 @@
+import React from 'react'
 import { useTheme } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
 
@@ -10,7 +11,7 @@ export default function NoServerConnection() {
   return (
     <IconWrapper>
       <lord-icon
-        src={`${process.env.PUBLIC_URL}/lordicon/wrprwmwt.json`}
+        src='/lordicon/wrprwmwt.json'
         trigger='loop'
         colors={`primary:#121331,secondary:${primary}`}
         stroke='26'

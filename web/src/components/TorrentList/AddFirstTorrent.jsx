@@ -1,5 +1,5 @@
 import { useTheme } from '@material-ui/core'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import AddDialog from '../Add/AddDialog'
@@ -16,7 +16,7 @@ export default function AddFirstTorrent() {
     <>
       <IconWrapper onClick={() => handleClickOpen(true)} isButton>
         <lord-icon
-          src={`${process.env.PUBLIC_URL}/lordicon/jkzgajyr.json`}
+          src='/lordicon/jkzgajyr.json'
           trigger='loop'
           delay='2000'
           colors={`primary:#575757,secondary:${primary}`}

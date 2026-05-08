@@ -23,7 +23,7 @@ const getTMDBSettings = async () => {
     return data
   } catch (error) {
     return {
-      APIKey: process.env.REACT_APP_TMDB_API_KEY || '',
+      APIKey: import.meta.env.VITE_TMDB_API_KEY || '',
       APIURL: 'https://api.themoviedb.org/3',
       ImageURL: 'https://image.tmdb.org',
       ImageURLRu: 'https://imagetmdb.com',

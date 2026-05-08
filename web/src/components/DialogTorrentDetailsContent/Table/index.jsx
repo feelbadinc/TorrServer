@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next'
 import VideoPlayer from '../../VideoPlayer'
 import { TableStyle, ShortTableWrapper, ShortTable } from './style'
 
-const { memo, useState } = require('react')
+import React, { memo, useState } from 'react'
 
 // russian episode detection support
 ptt.addHandler('episode', /(\d{1,4})[- |. ]серия|серия[- |. ](\d{1,4})/i, { type: 'integer' })
