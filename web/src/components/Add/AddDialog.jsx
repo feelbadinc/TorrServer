@@ -98,6 +98,11 @@ export default function AddDialog({
     })
   }, [torrentSource])
 
+  const removePoster = useCallback(() => {
+    setIsPosterUrlCorrect(false)
+    setPosterUrl('')
+  }, [])
+
   useEffect(() => {
     if (!torrentSource) {
       setTitle('')
@@ -108,12 +113,7 @@ export default function AddDialog({
       removePoster()
       setIsUserInteractedWithPoster(false)
     }
-  }, [torrentSource])
-
-  const removePoster = () => {
-    setIsPosterUrlCorrect(false)
-    setPosterUrl('')
-  }
+  }, [torrentSource, removePoster])
 
   // Edit mode: init original/parsed title from name so poster can be searched
   useEffect(() => {
@@ -168,7 +168,7 @@ export default function AddDialog({
           }
         })
       },
-    [isUserInteractedWithPoster],
+    [isUserInteractedWithPoster, removePoster],
   )
 
   const delayedPosterSearch = useMemo(() => debounce(posterSearch, 700), [posterSearch])
@@ -232,6 +232,7 @@ export default function AddDialog({
     posterSearchLanguage,
     skipDebounce,
     isUserInteractedWithPoster,
+    removePoster,
   ])
 
   const handleSetSelectedFile = useCallback(fileOrFiles => {

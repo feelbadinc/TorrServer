@@ -59,12 +59,8 @@ export const removeRedundantCharacters = string => {
 }
 
 export const getTorrents = async () => {
-  try {
-    const { data } = await axios.post(torrentsHost(), { action: 'list' })
-    return data
-  } catch (error) {
-    throw new Error(null)
-  }
+  const { data } = await axios.post(torrentsHost(), { action: 'list' })
+  return data
 }
 
 export const detectStandaloneApp = () => {

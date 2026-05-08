@@ -1,15 +1,14 @@
-import { streamHost } from 'utils/Hosts'
+import React, { memo, useState } from 'react'
 import isEqual from 'lodash/isEqual'
-import { humanizeSize, detectStandaloneApp, isMacOS, isAppleDevice } from 'utils/Utils'
-import ptt from 'parse-torrent-title'
 import { Button } from '@material-ui/core'
 import CopyToClipboard from 'react-copy-to-clipboard'
 import { useTranslation } from 'react-i18next'
+import ptt from 'parse-torrent-title'
+import { streamHost } from 'utils/Hosts'
+import { humanizeSize, detectStandaloneApp, isMacOS, isAppleDevice } from 'utils/Utils'
 
 import VideoPlayer from '../../VideoPlayer'
 import { TableStyle, ShortTableWrapper, ShortTable } from './style'
-
-import React, { memo, useState } from 'react'
 
 // russian episode detection support
 ptt.addHandler('episode', /(\d{1,4})[- |. ]серия|серия[- |. ](\d{1,4})/i, { type: 'integer' })
