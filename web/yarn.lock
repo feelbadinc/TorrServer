@@ -1778,7 +1778,7 @@ escape-string-regexp@^4.0.0:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz#14ba83a5d373e3d311e5afca29cf5bfad965bf34"
   integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
 
-eslint-config-prettier@^10:
+eslint-config-prettier@^10.1.8:
   version "10.1.8"
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-10.1.8.tgz#15734ce4af8c2778cc32f0b01b37b0b5cd1ecb97"
   integrity sha512-82GZUjRS0p/jganf6q1rEO25VSoHH0hKPCTrgillPjdI/3bgBhAE1QzHrHTizjpRvy6pGAvKjDJtk2pF9NDq8w==
@@ -1807,7 +1807,7 @@ eslint-plugin-import-x@^4.16.2:
     stable-hash-x "^0.2.0"
     unrs-resolver "^1.9.2"
 
-eslint-plugin-prettier@^5:
+eslint-plugin-prettier@^5.5.5:
   version "5.5.5"
   resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-5.5.5.tgz#9eae11593faa108859c26f9a9c367d619a0769c0"
   integrity sha512-hscXkbqUZ2sPithAuLm5MXL+Wph+U7wHngPBv9OMWwlP8iaflyxpjTYZkmdgB4/vPIhemRlBEoLrH7UC1n7aUw==
@@ -1870,7 +1870,7 @@ eslint-visitor-keys@^5.0.1:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-5.0.1.tgz#9e3c9489697824d2d4ce3a8ad12628f91e9f59be"
   integrity sha512-tD40eHxA35h0PEIZNeIjkHoDR4YjjJp34biM0mDvplBe//mB+IHCqHDGV7pxF+7MklTvighcCPPZC7ynWyjdTA==
 
-eslint@^10:
+eslint@^10.3.0:
   version "10.3.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-10.3.0.tgz#ed5b810eb8e0191bf24bddcf9cdb45b974e0a16d"
   integrity sha512-XbEXaRva5cF0ZQB8w6MluHA0kZZfV2DuCMJ3ozyEOHLwDpZX2Lmm/7Pp0xdJmI0GL1W05VH5VwIFHEm1Vcw2gw==
@@ -2290,7 +2290,7 @@ i18next-browser-languagedetector@^6.1.8:
   dependencies:
     "@babel/runtime" "^7.19.0"
 
-i18next@^20.3.1:
+i18next@^20.6.1:
   version "20.6.1"
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-20.6.1.tgz#535e5f6e5baeb685c7d25df70db63bf3cc0aa345"
   integrity sha512-yCMYTMEJ9ihCwEQQ3phLo7I/Pwycf8uAx+sRHwwk5U9Aui/IZYgQRyMqXafQOw5QQ7DM1Z+WyEXWIqSuJHhG2A==
@@ -2707,7 +2707,7 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
-lodash@^4.17.21, lodash@^4.17.23:
+lodash@^4.17.21, lodash@^4.18.1:
   version "4.18.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.18.1.tgz#ff2b66c1f6326d59513de2407bf881439812771c"
   integrity sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==
@@ -3025,12 +3025,12 @@ parse-asn1@^5.0.0, parse-asn1@^5.1.9:
     pbkdf2 "^3.1.5"
     safe-buffer "^5.2.1"
 
-parse-torrent-title@^1.3.0:
+parse-torrent-title@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/parse-torrent-title/-/parse-torrent-title-1.4.0.tgz#0be712c3c0b92870cf38f74e73a2398382c0be79"
   integrity sha512-/G0rQNeAUmNwB3QtyBJtNDAr1Q95Gg3wgwQ3dbYEkX8tOdkw5XmUS03O3+QqAV5hDNRVMatBG2fIoz+H/UMseQ==
 
-parse-torrent@^9.1.3:
+parse-torrent@^9.1.5:
   version "9.1.5"
   resolved "https://registry.yarnpkg.com/parse-torrent/-/parse-torrent-9.1.5.tgz#fcae5f360d9baf617d9a2de68e74d5de4c8099fd"
   integrity sha512-K8FXRwTOaZMI0/xuv0dpng1MVHZRtMJ0jRWBJ3qZWVNTrC1MzWUxm9QwaXDz/2qPhV2XC4UIHI92IGHwseAwaA==
@@ -3102,7 +3102,7 @@ pkg-dir@^5.0.0:
   dependencies:
     find-up "^5.0.0"
 
-polished@^4.1.3:
+polished@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/polished/-/polished-4.3.1.tgz#5a00ae32715609f83d89f6f31d0f0261c6170548"
   integrity sha512-OBatVyC/N7SCW/FaDHrSd+vn0o5cS855TOmYi4OkdWUMSJCET/xip//ch8xGUvtr3i44X9LVyWwQlRMTN3pwSA==
@@ -3145,7 +3145,7 @@ prettier-linter-helpers@^1.0.1:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^3:
+prettier@^3.8.3:
   version "3.8.3"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.8.3.tgz#560f2de55bf01b4c0503bc629d5df99b9a1d09b0"
   integrity sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw==
@@ -3228,7 +3228,7 @@ randomfill@^1.0.4:
     randombytes "^2.0.5"
     safe-buffer "^5.1.0"
 
-react-copy-to-clipboard@^5.0.3:
+react-copy-to-clipboard@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/react-copy-to-clipboard/-/react-copy-to-clipboard-5.1.1.tgz#76adb8be03616e99692fcf3f762365ed3fb5ff16"
   integrity sha512-s+HrzLyJBxrpGTYXF15dTgMjAJpEPZT/Yp6NytAtZMRngejxt6Pt5WrfFxLAcsqUDU6sY1Jz6tyHwIicE1U2Xg==
@@ -3250,7 +3250,7 @@ react-dom@^17.0.2:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
-react-dropzone@^11.3.2:
+react-dropzone@^11.7.1:
   version "11.7.1"
   resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-11.7.1.tgz#3851bb75b26af0bf1b17ce1449fd980e643b9356"
   integrity sha512-zxCMwhfPy1olUEbw3FLNPLhAm/HnaYH5aELIEglRbqabizKAdHs0h+WuyOpmA+v1JXn0++fpQDdNfUagWt5hJQ==
@@ -3268,7 +3268,7 @@ react-event-listener@^0.6.0:
     prop-types "^15.6.0"
     warning "^4.0.1"
 
-react-i18next@^11.10.0:
+react-i18next@^11.18.6:
   version "11.18.6"
   resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.18.6.tgz#e159c2960c718c1314f1e8fcaa282d1c8b167887"
   integrity sha512-yHb2F9BiT0lqoQDt8loZ5gWP331GwctHz9tYQ8A2EIEUu+CcEdjBLQWli1USG3RdWQt3W+jqQLg/d4rrQR96LA==
@@ -3325,7 +3325,7 @@ react-swipeable-views-utils@^0.14.1:
     react-swipeable-views-core "^0.14.1"
     shallow-equal "^1.2.1"
 
-react-swipeable-views@^0.14.0:
+react-swipeable-views@^0.14.1:
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/react-swipeable-views/-/react-swipeable-views-0.14.1.tgz#71809acbf1470eeaea17cb4d5d21d22ab07e1052"
   integrity sha512-dbCicNAez5yWKve7zu7PVGWWIY28JGgMIJBKwSUkpmZaC14zmEL/HaVoZzKyZ7Vm/pSVU2IGVo8zfCYsWJb3pQ==
