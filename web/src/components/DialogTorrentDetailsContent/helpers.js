@@ -74,5 +74,4 @@ const playableExtList = [
   'xm',
 ]
 
-// eslint-disable-next-line import/prefer-default-export
 export const isFilePlayable = fileName => playableExtList.includes(getExt(fileName))
