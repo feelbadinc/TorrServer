@@ -1,5 +1,5 @@
 import Measure from 'react-measure'
-import { useState, memo, useRef, useEffect, useContext } from 'react'
+import React, { useState, memo, useRef, useEffect, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import isEqual from 'lodash/isEqual'
 import { DarkModeContext } from 'components/App'

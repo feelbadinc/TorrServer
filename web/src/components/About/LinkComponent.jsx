@@ -1,3 +1,4 @@
+import React from 'react'
 import { GitHub as GitHubIcon } from '@material-ui/icons'
 
 import { LinkWrapper, LinkIcon } from './style'

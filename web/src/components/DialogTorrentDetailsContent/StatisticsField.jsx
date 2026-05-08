@@ -1,3 +1,4 @@
+import React from 'react'
 import { WidgetFieldWrapper, WidgetFieldIcon, WidgetFieldValue, WidgetFieldTitle } from './style'
 
 export default function StatisticsField({ icon: Icon, title, value, iconBg, valueBg }) {

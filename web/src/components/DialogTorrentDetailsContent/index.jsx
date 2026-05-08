@@ -1,6 +1,6 @@
 import { NoImageIcon } from 'icons'
 import { humanizeSize, removeRedundantCharacters } from 'utils/Utils'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, ButtonGroup } from '@material-ui/core'
 import ptt from 'parse-torrent-title'
 import axios from 'axios'

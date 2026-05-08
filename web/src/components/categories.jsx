@@ -1,3 +1,4 @@
+import React from 'react'
 import MovieCreationIcon from '@material-ui/icons/MovieCreation'
 import LiveTvIcon from '@material-ui/icons/LiveTv'
 import MusicNoteIcon from '@material-ui/icons/MusicNote'

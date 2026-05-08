@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Button, DialogActions, DialogTitle, ListItemIcon, ListItemText } from '@material-ui/core'
 import { StyledDialog, StyledMenuButtonWrapper } from 'style/CustomMaterialUiStyles'
 import { PowerSettingsNew as PowerSettingsNewIcon, PowerOff as PowerOffIcon } from '@material-ui/icons'

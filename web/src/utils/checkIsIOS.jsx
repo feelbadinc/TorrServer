@@ -1,3 +1,4 @@
+import React from 'react'
 export default () => {
   if (typeof window === `undefined` || typeof navigator === `undefined`) return false
 

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { memo } from 'react'
+import React, { memo } from 'react'
 import { playlistTorrHost, torrentsHost, viewedHost } from 'utils/Hosts'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { Button } from '@material-ui/core'

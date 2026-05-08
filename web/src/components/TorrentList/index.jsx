@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import React, { useMemo } from 'react'
 import TorrentCard from 'components/TorrentCard'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { TorrentListWrapper, CenteredGrid } from 'components/App/style'

@@ -1,3 +1,4 @@
+import React from 'react'
 import { CreditCard as CreditCardIcon } from '@material-ui/icons'
 import { useTranslation } from 'react-i18next'
 import CloseServer from 'components/CloseServer'

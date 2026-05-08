@@ -1,3 +1,4 @@
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { rgba } from 'polished'
 import { NoImageIcon } from 'icons'

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Button from '@material-ui/core/Button'
 import { torrentsHost } from 'utils/Hosts'
 import axios from 'axios'

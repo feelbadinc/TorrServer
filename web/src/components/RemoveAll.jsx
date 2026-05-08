@@ -3,7 +3,7 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import DeleteIcon from '@material-ui/icons/Delete'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { torrentsHost } from 'utils/Hosts'
 import { useTranslation } from 'react-i18next'
 

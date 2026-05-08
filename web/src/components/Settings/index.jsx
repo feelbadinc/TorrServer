@@ -1,6 +1,6 @@
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import SettingsIcon from '@material-ui/icons/Settings'
 import { useTranslation } from 'react-i18next'
 import { StyledMenuButtonWrapper } from 'style/CustomMaterialUiStyles'

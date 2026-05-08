@@ -14,7 +14,7 @@ import {
   Switch,
 } from '@material-ui/core'
 import { styled } from '@material-ui/core/styles'
-import { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 
 import { SecondarySettingsContent, SettingSectionLabel } from './style'
 

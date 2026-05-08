@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Checkbox, FormControlLabel } from '@material-ui/core'
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 import { SectionTitle, WidgetWrapper } from '../style'
 import { DetailedViewCacheSection, DetailedViewWidgetSection } from './style'

@@ -1,3 +1,4 @@
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { USBIcon, RAMIcon } from 'icons'
 import { FormControlLabel, Switch } from '@material-ui/core'
