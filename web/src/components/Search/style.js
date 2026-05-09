@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 
 export const Content = styled.div`
   ${({
-    isLoading,
+    $isLoading,
     theme: {
       settingsDialog: { contentBG },
     },
@@ -11,7 +11,7 @@ export const Content = styled.div`
     overflow: auto;
     flex: 1;
 
-    ${isLoading &&
+    ${$isLoading &&
     css`
       min-height: 500px;
       display: grid;

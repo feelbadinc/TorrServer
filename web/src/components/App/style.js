@@ -7,7 +7,7 @@ import { pwaFooterHeight } from './PWAFooter/style'
 
 export const AppWrapper = styled.div`
   ${({
-    isDrawerOpen,
+    $isDrawerOpen,
     theme: {
       app: { appSecondaryColor },
     },
@@ -15,7 +15,7 @@ export const AppWrapper = styled.div`
     height: 100%;
     background: ${rgba(appSecondaryColor, 0.8)};
     display: grid;
-    grid-template-columns: ${isDrawerOpen ? '240px' : '60px'} 1fr;
+    grid-template-columns: ${$isDrawerOpen ? '240px' : '60px'} 1fr;
     grid-template-rows: 60px 1fr;
     grid-template-areas:
       'head head'
@@ -69,7 +69,7 @@ export const AppHeader = styled.div`
 `
 export const AppSidebarStyle = styled.div`
   ${({
-    isDrawerOpen,
+    $isDrawerOpen,
     theme: {
       app: { appSecondaryColor, sidebarBGColor, sidebarFillColor },
     },
@@ -101,9 +101,9 @@ export const AppSidebarStyle = styled.div`
       left: 0;
       bottom: 0;
       width: 240px;
-      transform: translateX(${isDrawerOpen ? '0' : '-100%'});
+      transform: translateX(${$isDrawerOpen ? '0' : '-100%'});
       transition: transform 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
-      box-shadow: ${isDrawerOpen ? '2px 0 8px rgba(0,0,0,0.3)' : 'none'};
+      box-shadow: ${$isDrawerOpen ? '2px 0 8px rgba(0,0,0,0.3)' : 'none'};
     }
 
     ${standaloneMedia(css`
@@ -158,7 +158,7 @@ export const HeaderToggle = styled.div`
     place-items: center;
     color: #fff;
 
-    :hover {
+    &:hover {
       background: ${rgba(headerToggleColor, 0.7)};
     }
 
@@ -178,7 +178,7 @@ export const SidebarOverlay = styled.div`
   display: none;
 
   @media (max-width: 700px) {
-    display: ${({ isDrawerOpen }) => (isDrawerOpen ? 'block' : 'none')};
+    display: ${({ $isDrawerOpen }) => ($isDrawerOpen ? 'block' : 'none')};
     position: fixed;
     top: 60px;
     left: 0;

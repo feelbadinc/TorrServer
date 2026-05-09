@@ -16,7 +16,7 @@ export function PWAInstallationGuide() {
   if (!isOpen) return null
 
   return (
-    <StyledWrapper isOpen={shouldBeOpened}>
+    <StyledWrapper $isOpen={shouldBeOpened}>
       <StyledHeader>
         <img src='/icon.png' width={50} alt='ts-icon' />
 

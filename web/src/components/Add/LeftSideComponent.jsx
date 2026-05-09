@@ -31,7 +31,7 @@ export default function LeftSideComponent({
 
   return (
     <LeftSide>
-      <LeftSideTopSection active={isTorrentSourceActive}>
+      <LeftSideTopSection $active={isTorrentSourceActive}>
         <TextField
           onChange={handleTorrentSourceChange}
           value={torrentSource}
@@ -48,7 +48,7 @@ export default function LeftSideComponent({
         />
       </LeftSideTopSection>
 
-      <LeftSideBottomSectionNoFile isDragActive={isDragActive} {...getRootProps()}>
+      <LeftSideBottomSectionNoFile $isDragActive={isDragActive} {...getRootProps()}>
         <input {...getInputProps()} />
         <div>{t('AddDialog.AppendFile.Or')}</div>
 

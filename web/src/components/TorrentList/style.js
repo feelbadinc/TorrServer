@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 
 export default styled.div`
   ${({
-    isButton,
+    $isButton,
     theme: {
       addDialog: { notificationSuccessBGColor, languageSwitchBGColor },
     },
@@ -12,13 +12,13 @@ export default styled.div`
     padding: 20px 40px;
     border-radius: 5px;
 
-    ${isButton &&
+    ${$isButton &&
     css`
       background: ${notificationSuccessBGColor};
       transition: 0.2s;
       cursor: pointer;
 
-      :hover {
+      &:hover {
         background: ${languageSwitchBGColor};
       }
     `}

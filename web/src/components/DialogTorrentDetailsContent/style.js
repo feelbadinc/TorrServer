@@ -20,7 +20,7 @@ export const DialogContentGrid = styled.div`
 `
 export const Poster = styled.div`
   ${({
-    poster,
+    $poster,
     theme: {
       dialogTorrentDetailsContent: { posterBGColor },
     },
@@ -30,7 +30,7 @@ export const Poster = styled.div`
     overflow: hidden;
     align-self: center;
 
-    ${poster
+    ${$poster
       ? css`
           img {
             border-radius: 5px;
@@ -53,7 +53,7 @@ export const Poster = styled.div`
     }
 
     @media (max-width: 840px) {
-      ${poster
+      ${$poster
         ? css`
             height: 200px;
           `
@@ -128,15 +128,15 @@ export const SectionSubName = styled.div`
       dialogTorrentDetailsContent: { subNameFontColor },
     },
   }) => css`
-    ${({ mb }) => css`
-      ${mb && `margin-top: ${mb / 3}px`};
-      ${mb && `margin-bottom: ${mb}px`};
+    ${({ $mb }) => css`
+      ${$mb && `margin-top: ${$mb / 3}px`};
+      ${$mb && `margin-bottom: ${$mb}px`};
       line-height: 1.2;
       color: ${subNameFontColor};
 
       @media (max-width: 800px) {
-        ${mb && `margin-top: ${mb / 4}px`};
-        ${mb && `margin-bottom: ${mb / 2}px`};
+        ${$mb && `margin-top: ${$mb / 4}px`};
+        ${$mb && `margin-bottom: ${$mb / 2}px`};
         font-size: 14px;
       }
     `}
@@ -145,23 +145,23 @@ export const SectionSubName = styled.div`
 
 export const SectionTitle = styled.div`
   ${({
-    color,
+    $color,
     theme: {
       dialogTorrentDetailsContent: { titleFontColor },
     },
   }) => css`
-    ${({ mb }) => css`
-      ${mb && `margin-bottom: ${mb}px`};
+    ${({ $mb }) => css`
+      ${$mb && `margin-bottom: ${$mb}px`};
       font-size: 34px;
       font-weight: 300;
       line-height: 1;
       word-break: break-word;
-      color: ${color || titleFontColor};
+      color: ${$color || titleFontColor};
 
       @media (max-width: 800px) {
         font-size: 24px;
         line-height: 1.1;
-        ${mb && `margin-bottom: ${mb / 2}px`};
+        ${$mb && `margin-bottom: ${$mb / 2}px`};
       }
     `}
   `}
@@ -183,8 +183,8 @@ export const WidgetWrapper = styled.div`
     gap: 10px;
   }
 
-  ${({ detailedView }) =>
-    detailedView
+  ${({ $detailedView }) =>
+    $detailedView
       ? css`
           @media (max-width: 800px) {
             grid-template-columns: repeat(2, 1fr);
@@ -241,10 +241,10 @@ export const WidgetFieldTitle = styled.div`
 `
 
 export const WidgetFieldIcon = styled.div`
-  ${({ bgColor }) => css`
+  ${({ $bgColor }) => css`
     grid-area: icon;
     color: ${rgba('#fff', 0.8)};
-    background: ${bgColor};
+    background: ${$bgColor};
     border-radius: 5px 0 0 5px;
 
     @media (max-width: 800px) {
@@ -256,7 +256,7 @@ export const WidgetFieldIcon = styled.div`
 `
 export const WidgetFieldValue = styled.div`
   ${({
-    bgColor,
+    $bgColor,
     theme: {
       dialogTorrentDetailsContent: { widgetFontColor },
     },
@@ -265,7 +265,7 @@ export const WidgetFieldValue = styled.div`
     font-size: 24px;
     padding: 0 20px 0 0;
     color: ${widgetFontColor};
-    background: ${bgColor};
+    background: ${$bgColor};
     border-radius: 0 5px 5px 0;
     white-space: nowrap;
 
@@ -278,13 +278,13 @@ export const WidgetFieldValue = styled.div`
 
 export const LoadingProgress = styled.div.attrs(
   ({
-    value,
-    fullAmount,
+    $value,
+    $fullAmount,
     theme: {
       dialogTorrentDetailsContent: { gradientStartColor, gradientEndColor },
     },
   }) => {
-    const percentage = Math.min(100, (value * 100) / fullAmount)
+    const percentage = Math.min(100, ($value * 100) / $fullAmount)
 
     return {
       // this block is here according to styled-components recomendation about fast changable components
@@ -294,14 +294,14 @@ export const LoadingProgress = styled.div.attrs(
     }
   },
 )`
-  ${({ label }) => css`
+  ${({ $label }) => css`
     border: 1px solid;
     padding: 10px 20px;
     border-radius: 5px;
     color: #000;
 
-    :before {
-      content: '${label}';
+    &:before {
+      content: '${$label}';
       display: grid;
       place-items: center;
       font-size: 20px;

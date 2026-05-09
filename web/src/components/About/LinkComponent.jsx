@@ -5,7 +5,7 @@ import { LinkWrapper, LinkIcon } from './style'
 
 export default function LinkComponent({ name, link }) {
   return (
-    <LinkWrapper isLink={!!link} href={link} target='_blank' rel='noreferrer'>
+    <LinkWrapper $isLink={!!link} href={link} target='_blank' rel='noreferrer'>
       {link && (
         <LinkIcon>
           <GitHubIcon />

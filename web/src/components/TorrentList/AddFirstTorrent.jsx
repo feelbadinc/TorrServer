@@ -14,7 +14,7 @@ export default function AddFirstTorrent() {
 
   return (
     <>
-      <IconWrapper onClick={() => handleClickOpen(true)} isButton>
+      <IconWrapper onClick={() => handleClickOpen(true)} $isButton>
         <lord-icon
           src='/lordicon/jkzgajyr.json'
           trigger='loop'

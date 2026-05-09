@@ -73,7 +73,7 @@ export default function App() {
             <CssBaseline />
 
             <div style={{ height: '100dvh' }}>
-              <AppWrapper isDrawerOpen={isDrawerOpen}>
+              <AppWrapper $isDrawerOpen={isDrawerOpen}>
                 <AppHeader>
                   <StyledIconButton edge='start' color='inherit' onClick={() => setIsDrawerOpen(!isDrawerOpen)}>
                     {isDrawerOpen ? <CloseIcon /> : <MenuIcon />}
@@ -139,7 +139,7 @@ export default function App() {
                   </div>
                 </AppHeader>
 
-                <SidebarOverlay isDrawerOpen={isDrawerOpen} onClick={() => setIsDrawerOpen(false)} />
+                <SidebarOverlay $isDrawerOpen={isDrawerOpen} onClick={() => setIsDrawerOpen(false)} />
 
                 <Sidebar
                   isOffline={isOffline}

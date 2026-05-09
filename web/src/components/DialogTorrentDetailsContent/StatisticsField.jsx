@@ -6,11 +6,11 @@ export default function StatisticsField({ icon: Icon, title, value, iconBg, valu
   return (
     <WidgetFieldWrapper>
       <WidgetFieldTitle>{title}</WidgetFieldTitle>
-      <WidgetFieldIcon bgColor={iconBg}>
+      <WidgetFieldIcon $bgColor={iconBg}>
         <Icon />
       </WidgetFieldIcon>
 
-      <WidgetFieldValue bgColor={valueBg}>{value}</WidgetFieldValue>
+      <WidgetFieldValue $bgColor={valueBg}>{value}</WidgetFieldValue>
     </WidgetFieldWrapper>
   )
 }

@@ -33,9 +33,9 @@ export default function DetailedView({
   return (
     <>
       <DetailedViewWidgetSection>
-        <SectionTitle mb={20}>{t('Data')}</SectionTitle>
+        <SectionTitle $mb={20}>{t('Data')}</SectionTitle>
 
-        <WidgetWrapper detailedView>
+        <WidgetWrapper $detailedView>
           <DownlodSpeedWidget data={downloadSpeed} />
           <UploadSpeedWidget data={uploadSpeed} />
           <PeersWidget data={torrent} />
@@ -47,7 +47,7 @@ export default function DetailedView({
       </DetailedViewWidgetSection>
 
       <DetailedViewCacheSection>
-        <SectionTitle color='#000' mb={20}>
+        <SectionTitle $color='#000' $mb={20}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span>{t('Cache')}</span>
 

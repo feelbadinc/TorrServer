@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 
 export const Content = styled.div`
   ${({
-    isEditMode,
+    $isEditMode,
     theme: {
       addDialog: { gradientStartColor, gradientEndColor, fontColor },
     },
@@ -12,7 +12,7 @@ export const Content = styled.div`
     background: linear-gradient(145deg, ${gradientStartColor}, ${gradientEndColor});
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(${isEditMode ? '1' : '2'}, 1fr);
+    grid-template-columns: repeat(${$isEditMode ? '1' : '2'}, 1fr);
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     overflow: auto;
     color: ${fontColor};
@@ -38,27 +38,27 @@ export const RightSide = styled.div`
 
 export const RightSideContainer = styled.div`
   ${({
-    isHidden,
-    notificationMessage,
-    isError,
+    $isHidden,
+    $notificationMessage,
+    $isError,
     theme: {
       addDialog: { notificationErrorBGColor, notificationSuccessBGColor },
     },
   }) => css`
     height: 530px;
 
-    ${notificationMessage &&
+    ${$notificationMessage &&
     css`
       position: relative;
       white-space: nowrap;
 
-      :before {
+      &:before {
         font-size: 20px;
         font-weight: 300;
-        content: '${notificationMessage}';
+        content: '${$notificationMessage}';
         display: grid;
         place-items: center;
-        background: ${isError ? notificationErrorBGColor : notificationSuccessBGColor};
+        background: ${$isError ? notificationErrorBGColor : notificationSuccessBGColor};
         padding: 10px 15px;
         position: absolute;
         top: 52%;
@@ -68,7 +68,7 @@ export const RightSideContainer = styled.div`
       }
     `};
 
-    ${isHidden &&
+    ${$isHidden &&
     css`
       display: none;
     `};
@@ -97,13 +97,13 @@ export const LeftSideBottomSectionNoFile = styled.div`
   text-align: center;
   outline: none;
 
-  ${({ isDragActive }) => isDragActive && `border: 4px dashed green`};
+  ${({ $isDragActive }) => $isDragActive && `border: 4px dashed green`};
 
   justify-items: center;
   grid-template-rows: 130px 1fr;
   cursor: pointer;
 
-  :hover {
+  &:hover {
     background-color: rgba(0, 0, 0, 0.04);
     svg {
       transform: translateY(-4%);
@@ -141,7 +141,7 @@ export const IconWrapper = styled.div`
 
 export const LeftSideTopSection = styled.div`
   ${({
-    active,
+    $active,
     theme: {
       addDialog: { gradientStartColor },
     },
@@ -150,7 +150,7 @@ export const LeftSideTopSection = styled.div`
     padding: 0 20px 20px 20px;
     transition: all 0.3s;
 
-    ${active && 'box-shadow: 0 8px 10px -9px rgba(0, 0, 0, 0.5)'};
+    ${$active && 'box-shadow: 0 8px 10px -9px rgba(0, 0, 0, 0.5)'};
   `}
 `
 
@@ -222,7 +222,7 @@ export const PosterSuggestionsItem = styled.div`
     height: 100%;
     object-fit: cover;
 
-    :hover {
+    &:hover {
       filter: brightness(130%);
     }
   }
@@ -230,7 +230,7 @@ export const PosterSuggestionsItem = styled.div`
 
 export const Poster = styled.div`
   ${({
-    poster,
+    $poster,
     theme: {
       addDialog: { posterBGColor },
     },
@@ -240,7 +240,7 @@ export const Poster = styled.div`
     width: 200px;
     grid-area: poster;
 
-    ${poster
+    ${$poster
       ? css`
           img {
             width: 200px;
@@ -266,7 +266,7 @@ export const ClearPosterButton = styled(Button)`
   justify-self: flex-start;
   transform: translateY(-50%);
   position: absolute;
-  ${({ showbutton }) => !showbutton && 'display: none'};
+  ${({ $showbutton }) => !$showbutton && 'display: none'};
 
   @media (max-width: 540px) {
     transform: translateY(-140%);
@@ -286,7 +286,7 @@ export const UpdatePosterButton = styled(Button)`
 
 export const PosterLanguageSwitch = styled.div`
   ${({
-    showbutton,
+    $showbutton,
     theme: {
       addDialog: { languageSwitchBGColor, languageSwitchFontColor },
     },
@@ -308,9 +308,9 @@ export const PosterLanguageSwitch = styled.div`
     cursor: pointer;
     transition: all 0.3s;
 
-    ${!showbutton && 'display: none'};
+    ${!$showbutton && 'display: none'};
 
-    :hover {
+    &:hover {
       filter: brightness(1.1);
     }
   `}
@@ -327,7 +327,7 @@ export const MultiFileRow = styled.div`
   align-items: start;
   transition: box-shadow 0.2s;
 
-  :hover {
+  &:hover {
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16), 0px 1px 4px rgba(0, 0, 0, 0.12);
   }
 `
@@ -391,8 +391,8 @@ export const StyledPWAAddButton = styled.div`
   width: 45px;
   position: relative;
 
-  :before,
-  :after {
+  &:before,
+  &:after {
     content: '';
     background: white;
     position: absolute;
@@ -401,11 +401,11 @@ export const StyledPWAAddButton = styled.div`
     transform: translate(-50%, -50%);
   }
 
-  :before {
+  &:before {
     width: 2px;
     height: 25px;
   }
-  :after {
+  &:after {
     width: 25px;
     height: 2px;
   }

@@ -52,18 +52,18 @@ export default function PrimarySettingsComponent({
 
         <PreloadCachePercentage
           value={100 - cachePercentage}
-          label={`${t('Cache')} ${cacheSize} ${t('MB')}`}
-          preloadCachePercentage={preloadCachePercentage}
+          $label={`${t('Cache')} ${cacheSize} ${t('MB')}`}
+          $preloadCachePercentage={preloadCachePercentage}
         />
 
         <CacheLegendGrid>
-          <CacheLegendDot color={cacheBeforeReaderColor} aria-hidden />
+          <CacheLegendDot $color={cacheBeforeReaderColor} aria-hidden />
           <div className='cache-legend-value'>
             {100 - cachePercentage}% ({Math.round((cacheSize / 100) * (100 - cachePercentage))} {t('MB')})
           </div>
           <div className='cache-legend-desc'>{t('SettingsDialog.CacheBeforeReaderDesc')}</div>
 
-          <CacheLegendDot color={cacheAfterReaderColor} aria-hidden />
+          <CacheLegendDot $color={cacheAfterReaderColor} aria-hidden />
           <div className='cache-legend-value'>
             {cachePercentage}% ({Math.round((cacheSize / 100) * cachePercentage)} {t('MB')})
           </div>
@@ -113,16 +113,16 @@ export default function PrimarySettingsComponent({
           <CacheStorageLocationLabel />
 
           <div style={{ display: 'grid', gridAutoFlow: 'column' }}>
-            <StorageButton small onClick={() => updateSettings({ UseDisk: false })}>
-              <StorageIconWrapper small>
+            <StorageButton $small onClick={() => updateSettings({ UseDisk: false })}>
+              <StorageIconWrapper $small>
                 <RAMIcon color='#323637' />
               </StorageIconWrapper>
 
               <div>{t('SettingsDialog.RAM')}</div>
             </StorageButton>
 
-            <StorageButton small selected>
-              <StorageIconWrapper small selected>
+            <StorageButton $small $selected>
+              <StorageIconWrapper $small $selected>
                 <USBIcon color='#dee3e5' />
               </StorageIconWrapper>
 
@@ -156,8 +156,8 @@ export default function PrimarySettingsComponent({
         <CacheStorageSelector>
           <CacheStorageLocationLabel style={{ placeSelf: 'start', gridArea: 'label' }} />
 
-          <StorageButton selected>
-            <StorageIconWrapper selected>
+          <StorageButton $selected>
+            <StorageIconWrapper $selected>
               <RAMIcon color='#dee3e5' />
             </StorageIconWrapper>
 

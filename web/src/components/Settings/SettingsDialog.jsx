@@ -146,7 +146,7 @@ export default function SettingsDialog({ handleClose }) {
         </StyledTabs>
       </AppBar>
 
-      <Content isLoading={!settings}>
+      <Content $isLoading={!settings}>
         {settings ? (
           <>
             <SwipeableViews
@@ -159,7 +159,7 @@ export default function SettingsDialog({ handleClose }) {
                   settings={settings}
                   inputForm={inputForm}
                   cachePercentage={cachePercentage}
-                  preloadCachePercentage={preloadCachePercentage}
+                  $preloadCachePercentage={preloadCachePercentage}
                   cacheSize={cacheSize}
                   isProMode={isProMode}
                   setCacheSize={setCacheSize}

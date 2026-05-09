@@ -41,17 +41,17 @@ export const TorrentCardPoster = styled.div`
   transition: 0.2s;
   position: relative;
 
-  :hover {
+  &:hover {
     filter: brightness(0.7);
   }
 
   ${({
-    isPoster,
+    $isPoster,
     theme: {
       torrentCard: { cardSecondaryColor, accentCardColor },
     },
   }) =>
-    isPoster
+    $isPoster
       ? css`
           img {
             width: 100%;
@@ -220,11 +220,11 @@ export const StyledButton = styled.button`
       width: 20px;
     }
 
-    :hover {
+    &:hover {
       background: ${accentCardColor};
     }
 
-    > :first-child {
+    > *:first-child {
       margin-right: 10px;
     }
 
@@ -250,10 +250,10 @@ export const StyledButton = styled.button`
 `
 
 export const StatusIndicators = styled.div`
-  ${({ color }) => css`
+  ${({ $color }) => css`
     height: 8px;
     width: 8px;
-    background-color: ${color};
+    background-color: ${$color};
     border-radius: 50%;
     position: relative;
     top: 50%;

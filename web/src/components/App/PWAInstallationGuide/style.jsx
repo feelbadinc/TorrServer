@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 export const StyledWrapper = styled.div`
-  ${({ isOpen }) => css`
+  ${({ $isOpen }) => css`
     position: absolute;
     bottom: 10px;
     left: 50%;
@@ -12,7 +12,7 @@ export const StyledWrapper = styled.div`
     transition: all 0.3s;
     color: #000;
 
-    ${isOpen
+    ${$isOpen
       ? css`
           opacity: 1;
           transform: translate(-50%, 0);
@@ -23,7 +23,7 @@ export const StyledWrapper = styled.div`
           pointer-events: none;
         `}
 
-    > :not(:last-child) {
+    > *:not(:last-child) {
       border-bottom: 1px solid #dadadc;
     }
 
@@ -47,7 +47,7 @@ export const StyledHeader = styled.div`
 `
 
 export const StyledContent = styled.div`
-  > :not(:last-child) {
+  > *:not(:last-child) {
     margin-bottom: 25px;
   }
 

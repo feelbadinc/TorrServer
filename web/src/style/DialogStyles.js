@@ -18,7 +18,7 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
 
-  > :not(:last-child) {
+  > *:not(:last-child) {
     margin-right: 10px;
   }
 `

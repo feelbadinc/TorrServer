@@ -96,7 +96,7 @@ export const Divider = styled.div`
 
 export const Content = styled.div`
   ${({
-    isLoading,
+    $isLoading,
     theme: {
       settingsDialog: { contentBG },
     },
@@ -105,7 +105,7 @@ export const Content = styled.div`
     overflow: auto;
     flex: 1;
 
-    ${isLoading &&
+    ${$isLoading &&
     css`
       min-height: 500px;
       display: grid;
@@ -145,7 +145,7 @@ export const CacheLegendDot = styled.span`
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: ${({ color }) => color};
+  background: ${({ $color }) => $color};
   margin-top: 2px;
 
   @media (max-width: 600px) {
@@ -246,21 +246,21 @@ export const SecondarySettingsContent = styled.div`
   }
 `
 export const StorageButton = styled.div`
-  ${({ small, selected }) => css`
+  ${({ $small, $selected }) => css`
     transition: 0.2s;
     cursor: default;
     text-align: center;
 
-    ${!selected &&
+    ${!$selected &&
     css`
       cursor: pointer;
 
-      :hover {
+      &:hover {
         filter: brightness(0.8);
       }
     `}
 
-    ${small
+    ${$small
       ? css`
           display: grid;
           grid-template-columns: max-content 1fr;
@@ -278,19 +278,19 @@ export const StorageButton = styled.div`
 `
 
 export const StorageIconWrapper = styled.div`
-  ${({ selected, small }) => css`
-    width: ${small ? '60px' : '150px'};
-    height: ${small ? '60px' : '150px'};
+  ${({ $selected, $small }) => css`
+    width: ${$small ? '60px' : '150px'};
+    height: ${$small ? '60px' : '150px'};
     border-radius: 50%;
-    background: ${selected ? '#323637' : '#dee3e5'};
+    background: ${$selected ? '#323637' : '#dee3e5'};
 
     svg {
       transform: rotate(-45deg) scale(0.75);
     }
 
     @media (max-width: 930px) {
-      width: ${small ? '50px' : '90px'};
-      height: ${small ? '50px' : '90px'};
+      width: ${$small ? '50px' : '90px'};
+      height: ${$small ? '50px' : '90px'};
     }
   `}
 `
@@ -337,7 +337,7 @@ export const PreloadCachePercentage = styled.div.attrs(({ value }) => ({
     background: `linear-gradient(to right, ${cacheBeforeReaderColor} 0%, ${cacheBeforeReaderColor} ${value}%, ${cacheAfterReaderColor} ${value}%, ${cacheAfterReaderColor} 100%)`,
   },
 }))`
-  ${({ label, preloadCachePercentage }) => css`
+  ${({ $label, $preloadCachePercentage }) => css`
     border: 1px solid #323637;
     padding: 10px 20px;
     border-radius: 5px;
@@ -345,16 +345,16 @@ export const PreloadCachePercentage = styled.div.attrs(({ value }) => ({
     margin-bottom: 10px;
     position: relative;
 
-    :before {
-      content: '${label}';
+    &:before {
+      content: '${$label}';
       display: grid;
       place-items: center;
       font-size: 20px;
     }
 
-    :after {
+    &:after {
       content: '';
-      width: ${preloadCachePercentage}%;
+      width: ${$preloadCachePercentage}%;
       height: 100%;
       background: #323637;
       position: absolute;

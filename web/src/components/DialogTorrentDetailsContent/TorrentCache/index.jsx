@@ -133,7 +133,7 @@ const TorrentCache = ({ cache, isMini, isSnakeDebugMode }) => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }} ref={containerRef}>
-      <SnakeWrapper themeType={theme} isMini={isMini}>
+      <SnakeWrapper $themeType={theme} $isMini={isMini}>
         <canvas ref={canvasRef} />
       </SnakeWrapper>
 

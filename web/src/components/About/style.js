@@ -87,7 +87,7 @@ export const FooterSection = styled.div`
 `
 
 export const LinkWrapper = styled.a`
-  ${({ isLink }) => css`
+  ${({ $isLink }) => css`
     display: inline-flex;
     align-items: center;
     justify-content: start;
@@ -104,9 +104,9 @@ export const LinkWrapper = styled.a`
       transition: 0.2s;
     }
 
-    ${isLink
+    ${$isLink
       ? css`
-          :hover {
+          &:hover {
             filter: brightness(1.1);
 
             > * {

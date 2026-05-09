@@ -28,7 +28,7 @@ const TorrentFunctions = memo(
         {!isOnlyOnePlayableFile && !!viewedFileList?.length && (
           <>
             <SmallLabel>{t('DownloadPlaylist')}</SmallLabel>
-            <SectionSubName mb={10}>
+            <SectionSubName $mb={10}>
               {t('LatestFilePlayed')}{' '}
               <strong>
                 {latestViewedFileData?.title}.
@@ -56,7 +56,7 @@ const TorrentFunctions = memo(
             </MainSectionButtonGroup>
           </>
         )}
-        <SmallLabel mb={10}>{t('TorrentState')}</SmallLabel>
+        <SmallLabel $mb={10}>{t('TorrentState')}</SmallLabel>
         <MainSectionButtonGroup>
           <Button onClick={() => removeTorrentViews()} variant='contained' color='primary' size='large'>
             {t('RemoveViews')}
@@ -65,7 +65,7 @@ const TorrentFunctions = memo(
             {t('DropTorrent')}
           </Button>
         </MainSectionButtonGroup>
-        <SmallLabel mb={10}>{t('Info')}</SmallLabel>
+        <SmallLabel $mb={10}>{t('Info')}</SmallLabel>
         <MainSectionButtonGroup>
           {(isOnlyOnePlayableFile || !viewedFileList?.length) && (
             <a style={{ textDecoration: 'none' }} href={fullPlaylistLink}>
