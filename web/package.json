@@ -1,8 +1,17 @@
 {
-  "name": "torrserver_web",
-  "version": "0.1.0",
+  "name": "torrserver-web",
+  "version": "1.0.0",
   "private": true,
+  "license": "GPL-3.0-only",
+  "author": "dancheskus",
   "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --color",
+    "fix": "eslint src --color --fix"
+  },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
@@ -23,25 +32,6 @@
     "react-swipeable": "^7.0.2",
     "styled-components": "^6.4.1"
   },
-  "scripts": {
-    "start": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint src --color",
-    "fix": "eslint src --color --fix"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@vitejs/plugin-react-swc": "^4.3.0",
@@ -55,9 +45,5 @@
     "prettier": "^3.8.3",
     "vite": "^7.3.3",
     "vite-plugin-node-polyfills": "^0.26.0"
-  },
-  "description": "",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }
