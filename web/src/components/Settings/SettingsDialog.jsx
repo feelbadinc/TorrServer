@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { clearTMDBCache } from 'components/Add/helpers'
 import AppBar from '@mui/material/AppBar'
-import SwipeableViews from 'react-swipeable-views'
+import { useSwipeable } from 'react-swipeable'
 import CircularProgress from '@mui/material/CircularProgress'
 import { StyledDialog } from 'style/CustomMaterialUiStyles'
 import useOnStandaloneAppOutsideClick from 'utils/useOnStandaloneAppOutsideClick'
@@ -95,7 +95,13 @@ export default function SettingsDialog({ handleClose }) {
 
   const updateSettings = newProps => setSettings({ ...settings, ...newProps })
   const handleChange = (_, newValue) => setSelectedTab(newValue)
-  const handleChangeIndex = index => setSelectedTab(index)
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => setSelectedTab(prev => (direction === 'rtl' ? Math.max(prev - 1, 0) : Math.min(prev + 1, 3))),
+    onSwipedRight: () => setSelectedTab(prev => (direction === 'rtl' ? Math.min(prev + 1, 3) : Math.max(prev - 1, 0))),
+    preventScrollOnSwipe: true,
+    trackMouse: false,
+  })
 
   return (
     <StyledDialog open onClose={handleClose} fullScreen={fullScreen} fullWidth maxWidth='md' ref={ref}>
@@ -149,46 +155,54 @@ export default function SettingsDialog({ handleClose }) {
       <Content $isLoading={!settings}>
         {settings ? (
           <>
-            <SwipeableViews
-              axis={direction === 'rtl' ? 'x-reverse' : 'x'}
-              index={selectedTab}
-              onChangeIndex={handleChangeIndex}
-            >
-              <TabPanel value={selectedTab} index={0} dir={direction}>
-                <PrimarySettingsComponent
-                  settings={settings}
-                  inputForm={inputForm}
-                  cachePercentage={cachePercentage}
-                  $preloadCachePercentage={preloadCachePercentage}
-                  cacheSize={cacheSize}
-                  isProMode={isProMode}
-                  setCacheSize={setCacheSize}
-                  setCachePercentage={setCachePercentage}
-                  setPreloadCachePercentage={setPreloadCachePercentage}
-                  updateSettings={updateSettings}
-                />
-              </TabPanel>
+            <div {...swipeHandlers} style={{ overflow: 'hidden' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  transform: `translateX(${direction === 'rtl' ? selectedTab * 100 : -(selectedTab * 100)}%)`,
+                  transition: 'transform 0.3s ease-out',
+                }}
+              >
+                <TabPanel value={selectedTab} index={0} dir={direction}>
+                  <PrimarySettingsComponent
+                    settings={settings}
+                    inputForm={inputForm}
+                    cachePercentage={cachePercentage}
+                    $preloadCachePercentage={preloadCachePercentage}
+                    cacheSize={cacheSize}
+                    isProMode={isProMode}
+                    setCacheSize={setCacheSize}
+                    setCachePercentage={setCachePercentage}
+                    setPreloadCachePercentage={setPreloadCachePercentage}
+                    updateSettings={updateSettings}
+                  />
+                </TabPanel>
 
-              <TabPanel value={selectedTab} index={1} dir={direction}>
-                <SecondarySettingsComponent settings={settings} inputForm={inputForm} updateSettings={updateSettings} />
-              </TabPanel>
+                <TabPanel value={selectedTab} index={1} dir={direction}>
+                  <SecondarySettingsComponent
+                    settings={settings}
+                    inputForm={inputForm}
+                    updateSettings={updateSettings}
+                  />
+                </TabPanel>
 
-              <TabPanel value={selectedTab} index={2} dir={direction}>
-                <TorznabSettings settings={settings} inputForm={inputForm} updateSettings={updateSettings} />
-              </TabPanel>
+                <TabPanel value={selectedTab} index={2} dir={direction}>
+                  <TorznabSettings settings={settings} inputForm={inputForm} updateSettings={updateSettings} />
+                </TabPanel>
 
-              <TabPanel value={selectedTab} index={3} dir={direction}>
-                <TMDBSettings settings={settings} updateSettings={updateSettings} />
-                <MobileAppSettings
-                  isVlcUsed={isVlcUsed}
-                  setIsVlcUsed={setIsVlcUsed}
-                  isInfuseUsed={isInfuseUsed}
-                  setIsInfuseUsed={setIsInfuseUsed}
-                  isIinaUsed={isIinaUsed}
-                  setIsIinaUsed={setIsIinaUsed}
-                />
-              </TabPanel>
-            </SwipeableViews>
+                <TabPanel value={selectedTab} index={3} dir={direction}>
+                  <TMDBSettings settings={settings} updateSettings={updateSettings} />
+                  <MobileAppSettings
+                    isVlcUsed={isVlcUsed}
+                    setIsVlcUsed={setIsVlcUsed}
+                    isInfuseUsed={isInfuseUsed}
+                    setIsInfuseUsed={setIsInfuseUsed}
+                    isIinaUsed={isIinaUsed}
+                    setIsIinaUsed={setIsIinaUsed}
+                  />
+                </TabPanel>
+              </div>
+            </div>
           </>
         ) : (
           <CircularProgress color='secondary' />

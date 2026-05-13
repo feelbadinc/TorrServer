@@ -5,7 +5,14 @@ export const a11yProps = index => ({
 })
 
 export const TabPanel = ({ children, value, index, ...other }) => (
-  <div role='tabpanel' hidden={value !== index} id={`full-width-tabpanel-${index}`} {...other}>
-    {value === index && <>{children}</>}
+  <div
+    role='tabpanel'
+    id={`full-width-tabpanel-${index}`}
+    aria-labelledby={`full-width-tab-${index}`}
+    aria-hidden={value !== index}
+    style={{ width: '100%', flexShrink: 0 }}
+    {...other}
+  >
+    {children}
   </div>
 )
