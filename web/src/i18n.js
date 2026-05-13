@@ -14,6 +14,7 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'en', // default language will be used if none of declared lanuages detected (en, ru)
+    compatibilityJSON: 'v3',
     interpolation: { escapeValue: false }, // react already safes from xss
     resources: {
       en: { translation: translationEN },
