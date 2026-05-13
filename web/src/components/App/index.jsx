@@ -12,7 +12,6 @@ import {
   Search as SearchIcon,
 } from '@mui/icons-material'
 import { echoHost } from 'utils/Hosts'
-
 import axios from 'axios'
 import TorrentList from 'components/TorrentList'
 import DonateSnackbar from 'components/Donate'
@@ -67,115 +66,115 @@ export default function App() {
 
       <DarkModeContext.Provider value={{ isDarkMode }}>
         <StyledEngineProvider injectFirst>
-      <MuiThemeProvider theme={muiTheme}>
-          <StyledComponentsThemeProvider
-            theme={getStyledComponentsTheme(isDarkMode ? THEME_MODES.DARK : THEME_MODES.LIGHT)}
-          >
-            <CssBaseline />
+          <MuiThemeProvider theme={muiTheme}>
+            <StyledComponentsThemeProvider
+              theme={getStyledComponentsTheme(isDarkMode ? THEME_MODES.DARK : THEME_MODES.LIGHT)}
+            >
+              <CssBaseline />
 
-            <div style={{ height: '100dvh' }}>
-              <AppWrapper $isDrawerOpen={isDrawerOpen}>
-                <AppHeader>
-                  <StyledIconButton edge='start' color='inherit' onClick={() => setIsDrawerOpen(!isDrawerOpen)}>
-                    {isDrawerOpen ? <CloseIcon /> : <MenuIcon />}
-                  </StyledIconButton>
+              <div style={{ height: '100dvh' }}>
+                <AppWrapper $isDrawerOpen={isDrawerOpen}>
+                  <AppHeader>
+                    <StyledIconButton edge='start' color='inherit' onClick={() => setIsDrawerOpen(!isDrawerOpen)}>
+                      {isDrawerOpen ? <CloseIcon /> : <MenuIcon />}
+                    </StyledIconButton>
 
-                  <Typography variant='h6' noWrap>
-                    TorrServer {torrServerVersion}
-                  </Typography>
+                    <Typography variant='h6' noWrap>
+                      TorrServer {torrServerVersion}
+                    </Typography>
 
-                  <div
-                    style={{
-                      justifySelf: 'end',
-                      display: 'grid',
-                      gridTemplateColumns: isStandaloneApp ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)',
-                      gap: '10px',
-                    }}
-                  >
-                    {isStandaloneApp && (
-                      <HeaderToggle onClick={() => setIsSearchDialogOpen(true)}>
-                        <SearchIcon />
-                      </HeaderToggle>
-                    )}
-
-                    <HeaderToggle onClick={() => (sortABC === true ? handleClickSortDate() : handleClickSortABC())}>
-                      {sortABC === true ? <SortByAlphaIcon /> : <SortIcon />}
-                    </HeaderToggle>
-
-                    <HeaderToggle
-                      onClick={() => {
-                        if (currentThemeMode === THEME_MODES.LIGHT) updateThemeMode(THEME_MODES.DARK)
-                        if (currentThemeMode === THEME_MODES.DARK) updateThemeMode(THEME_MODES.AUTO)
-                        if (currentThemeMode === THEME_MODES.AUTO) updateThemeMode(THEME_MODES.LIGHT)
+                    <div
+                      style={{
+                        justifySelf: 'end',
+                        display: 'grid',
+                        gridTemplateColumns: isStandaloneApp ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)',
+                        gap: '10px',
                       }}
                     >
-                      {currentThemeMode === THEME_MODES.LIGHT ? (
-                        <Brightness5Icon />
-                      ) : currentThemeMode === THEME_MODES.DARK ? (
-                        <Brightness4Icon />
-                      ) : (
-                        <BrightnessAutoIcon />
+                      {isStandaloneApp && (
+                        <HeaderToggle onClick={() => setIsSearchDialogOpen(true)}>
+                          <SearchIcon />
+                        </HeaderToggle>
                       )}
-                    </HeaderToggle>
 
-                    <HeaderToggle
-                      onClick={() =>
-                        currentLang === 'en'
-                          ? changeLang('ru')
-                          : currentLang === 'ru'
-                          ? changeLang('ua')
-                          : currentLang === 'ua'
-                          ? changeLang('zh')
-                          : currentLang === 'zh'
-                          ? changeLang('bg')
-                          : currentLang === 'bg'
-                          ? changeLang('fr')
-                          : currentLang === 'fr'
-                          ? changeLang('ro')
-                          : changeLang('en')
-                      }
-                    >
-                      {currentLang.toUpperCase()}
-                    </HeaderToggle>
-                  </div>
-                </AppHeader>
+                      <HeaderToggle onClick={() => (sortABC === true ? handleClickSortDate() : handleClickSortABC())}>
+                        {sortABC === true ? <SortByAlphaIcon /> : <SortIcon />}
+                      </HeaderToggle>
 
-                <SidebarOverlay $isDrawerOpen={isDrawerOpen} onClick={() => setIsDrawerOpen(false)} />
+                      <HeaderToggle
+                        onClick={() => {
+                          if (currentThemeMode === THEME_MODES.LIGHT) updateThemeMode(THEME_MODES.DARK)
+                          if (currentThemeMode === THEME_MODES.DARK) updateThemeMode(THEME_MODES.AUTO)
+                          if (currentThemeMode === THEME_MODES.AUTO) updateThemeMode(THEME_MODES.LIGHT)
+                        }}
+                      >
+                        {currentThemeMode === THEME_MODES.LIGHT ? (
+                          <Brightness5Icon />
+                        ) : currentThemeMode === THEME_MODES.DARK ? (
+                          <Brightness4Icon />
+                        ) : (
+                          <BrightnessAutoIcon />
+                        )}
+                      </HeaderToggle>
 
-                <Sidebar
-                  isOffline={isOffline}
-                  isLoading={isLoading}
-                  isDrawerOpen={isDrawerOpen}
-                  setIsDonationDialogOpen={setIsDonationDialogOpen}
-                  setGlobalFilterCategory={setGlobalFilterCategory}
-                />
+                      <HeaderToggle
+                        onClick={() =>
+                          currentLang === 'en'
+                            ? changeLang('ru')
+                            : currentLang === 'ru'
+                              ? changeLang('ua')
+                              : currentLang === 'ua'
+                                ? changeLang('zh')
+                                : currentLang === 'zh'
+                                  ? changeLang('bg')
+                                  : currentLang === 'bg'
+                                    ? changeLang('fr')
+                                    : currentLang === 'fr'
+                                      ? changeLang('ro')
+                                      : changeLang('en')
+                        }
+                      >
+                        {currentLang.toUpperCase()}
+                      </HeaderToggle>
+                    </div>
+                  </AppHeader>
 
-                <TorrentList
-                  isOffline={isOffline}
-                  torrents={torrents}
-                  isLoading={isLoading}
-                  sortABC={sortABC}
-                  sortCategory={globalCategoryFilter}
-                />
+                  <SidebarOverlay $isDrawerOpen={isDrawerOpen} onClick={() => setIsDrawerOpen(false)} />
 
-                <PWAFooter
-                  isOffline={isOffline}
-                  isLoading={isLoading}
-                  setIsDonationDialogOpen={setIsDonationDialogOpen}
-                />
+                  <Sidebar
+                    isOffline={isOffline}
+                    isLoading={isLoading}
+                    isDrawerOpen={isDrawerOpen}
+                    setIsDonationDialogOpen={setIsDonationDialogOpen}
+                    setGlobalFilterCategory={setGlobalFilterCategory}
+                  />
 
-                {/* <MuiThemeProvider theme={lightTheme}> */}
-                {isDonationDialogOpen && <DonateDialog onClose={() => setIsDonationDialogOpen(false)} />}
-                {/* </MuiThemeProvider> */}
+                  <TorrentList
+                    isOffline={isOffline}
+                    torrents={torrents}
+                    isLoading={isLoading}
+                    sortABC={sortABC}
+                    sortCategory={globalCategoryFilter}
+                  />
 
-                {isSearchDialogOpen && <SearchDialog handleClose={() => setIsSearchDialogOpen(false)} />}
+                  <PWAFooter
+                    isOffline={isOffline}
+                    isLoading={isLoading}
+                    setIsDonationDialogOpen={setIsDonationDialogOpen}
+                  />
 
-                {snackbarIsClosed ? checkIsIOS() && !isStandaloneApp && <PWAInstallationGuide /> : <DonateSnackbar />}
-              </AppWrapper>
-            </div>
-          </StyledComponentsThemeProvider>
-        </MuiThemeProvider>
-      </StyledEngineProvider>
+                  {/* <MuiThemeProvider theme={lightTheme}> */}
+                  {isDonationDialogOpen && <DonateDialog onClose={() => setIsDonationDialogOpen(false)} />}
+                  {/* </MuiThemeProvider> */}
+
+                  {isSearchDialogOpen && <SearchDialog handleClose={() => setIsSearchDialogOpen(false)} />}
+
+                  {snackbarIsClosed ? checkIsIOS() && !isStandaloneApp && <PWAInstallationGuide /> : <DonateSnackbar />}
+                </AppWrapper>
+              </div>
+            </StyledComponentsThemeProvider>
+          </MuiThemeProvider>
+        </StyledEngineProvider>
       </DarkModeContext.Provider>
     </>
   )

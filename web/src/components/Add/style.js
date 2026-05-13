@@ -320,7 +320,9 @@ export const MultiFileRow = styled.div`
   padding: 12px 16px;
   margin: 8px 12px;
   border-radius: 5px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 1px 2px rgba(0, 0, 0, 0.08);
   display: grid;
   grid-template-columns: 80px 1fr auto;
   gap: 12px;
@@ -328,7 +330,9 @@ export const MultiFileRow = styled.div`
   transition: box-shadow 0.2s;
 
   &:hover {
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16), 0px 1px 4px rgba(0, 0, 0, 0.12);
+    box-shadow:
+      0px 2px 6px rgba(0, 0, 0, 0.16),
+      0px 1px 4px rgba(0, 0, 0, 0.12);
   }
 `
 

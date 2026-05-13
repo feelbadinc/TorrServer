@@ -75,7 +75,7 @@ export default function TorznabSettings({ settings, inputForm, updateSettings })
           label={t('SettingsDialog.EnableRutorSearch')}
           labelPlacement='start'
         />
-        <FormHelperText margin='none'>{t('SettingsDialog.EnableRutorSearchHint')}</FormHelperText>
+        <FormHelperText>{t('SettingsDialog.EnableRutorSearchHint')}</FormHelperText>
       </FormGroup>
       <FormGroup>
         <FormControlLabel
@@ -90,7 +90,7 @@ export default function TorznabSettings({ settings, inputForm, updateSettings })
           label={t('Torznab.EnableTorznabSearch')}
           labelPlacement='start'
         />
-        <FormHelperText margin='none'>{t('Torznab.EnableSearchViaTorznab')}</FormHelperText>
+        <FormHelperText>{t('Torznab.EnableSearchViaTorznab')}</FormHelperText>
       </FormGroup>
 
       <div

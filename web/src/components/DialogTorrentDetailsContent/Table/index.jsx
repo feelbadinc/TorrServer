@@ -1,7 +1,6 @@
 import React, { memo, useState } from 'react'
 import isEqual from 'lodash/isEqual'
 import { Button } from '@mui/material'
-
 import { useTranslation } from 'react-i18next'
 import ptt from 'parse-torrent-title'
 import { streamHost } from 'utils/Hosts'
@@ -109,7 +108,12 @@ const Table = memo(
                             </a>
                           )
                         )}
-                        <Button variant='outlined' color='primary' size='small' onClick={() => navigator.clipboard.writeText(fullLink)}>
+                        <Button
+                          variant='outlined'
+                          color='primary'
+                          size='small'
+                          onClick={() => navigator.clipboard.writeText(fullLink)}
+                        >
                           {t('CopyLink')}
                         </Button>
                         {isSupported && shouldShowOpenLink && (
@@ -210,7 +214,12 @@ const Table = memo(
                       </a>
                     )}
 
-                    <Button variant='outlined' color='primary' size='small' onClick={() => navigator.clipboard.writeText(fullLink)}>
+                    <Button
+                      variant='outlined'
+                      color='primary'
+                      size='small'
+                      onClick={() => navigator.clipboard.writeText(fullLink)}
+                    >
                       {t('CopyLink')}
                     </Button>
                   </div>

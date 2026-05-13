@@ -168,7 +168,7 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
           label='IPv6'
           labelPlacement='start'
         />
-        <FormHelperText margin='none'>{t('SettingsDialog.EnableIPv6Hint')}</FormHelperText>
+        <FormHelperText>{t('SettingsDialog.EnableIPv6Hint')}</FormHelperText>
       </FormGroup>
       <FormGroup>
         <FormControlLabel
@@ -176,7 +176,7 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
           label='TCP (Transmission Control Protocol)'
           labelPlacement='start'
         />
-        <FormHelperText margin='none'>{t('SettingsDialog.DisableTCPHint')}</FormHelperText>
+        <FormHelperText>{t('SettingsDialog.DisableTCPHint')}</FormHelperText>
       </FormGroup>
       <FormGroup>
         <FormControlLabel
@@ -184,7 +184,7 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
           label='μTP (Micro Transport Protocol)'
           labelPlacement='start'
         />
-        <FormHelperText margin='none'>{t('SettingsDialog.DisableUTPHint')}</FormHelperText>
+        <FormHelperText>{t('SettingsDialog.DisableUTPHint')}</FormHelperText>
       </FormGroup>
       <FormGroup>
         <FormControlLabel
@@ -192,7 +192,7 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
           label='PEX (Peer Exchange)'
           labelPlacement='start'
         />
-        <FormHelperText margin='none'>{t('SettingsDialog.DisablePEXHint')}</FormHelperText>
+        <FormHelperText>{t('SettingsDialog.DisablePEXHint')}</FormHelperText>
       </FormGroup>
       <FormGroup>
         <FormControlLabel
@@ -200,7 +200,7 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
           label={t('SettingsDialog.ForceEncrypt')}
           labelPlacement='start'
         />
-        <FormHelperText margin='none'>{t('SettingsDialog.ForceEncryptHint')}</FormHelperText>
+        <FormHelperText>{t('SettingsDialog.ForceEncryptHint')}</FormHelperText>
       </FormGroup>
       <TextField
         onChange={inputForm}
@@ -234,7 +234,7 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
           label={t('SettingsDialog.DHT')}
           labelPlacement='start'
         />
-        <FormHelperText margin='none'>{t('SettingsDialog.DisableDHTHint')}</FormHelperText>
+        <FormHelperText>{t('SettingsDialog.DisableDHTHint')}</FormHelperText>
       </FormGroup>
       <TextField
         onChange={inputForm}
@@ -256,7 +256,7 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
           label={t('SettingsDialog.Upload')}
           labelPlacement='start'
         />
-        <FormHelperText margin='none'>{t('SettingsDialog.UploadHint')}</FormHelperText>
+        <FormHelperText>{t('SettingsDialog.UploadHint')}</FormHelperText>
       </FormGroup>
       <TextField
         onChange={inputForm}
@@ -289,7 +289,7 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
           label='UPnP (Universal Plug and Play)'
           labelPlacement='start'
         />
-        <FormHelperText margin='none'>{t('SettingsDialog.DisableUPNPHint')}</FormHelperText>
+        <FormHelperText>{t('SettingsDialog.DisableUPNPHint')}</FormHelperText>
       </FormGroup>
       <FormGroup>
         <FormControlLabel
@@ -297,7 +297,7 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
           label={t('SettingsDialog.EnableDebug')}
           labelPlacement='start'
         />
-        <FormHelperText margin='none'>{t('SettingsDialog.EnableDebugHint')}</FormHelperText>
+        <FormHelperText>{t('SettingsDialog.EnableDebugHint')}</FormHelperText>
       </FormGroup>
       <FormGroup>
         <FormControlLabel
@@ -305,7 +305,7 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
           label={t('SettingsDialog.ResponsiveMode')}
           labelPlacement='start'
         />
-        <FormHelperText margin='none'>{t('SettingsDialog.ResponsiveModeHint')}</FormHelperText>
+        <FormHelperText>{t('SettingsDialog.ResponsiveModeHint')}</FormHelperText>
       </FormGroup>
       <br />
       <FormGroup style={{ marginBottom: '20px' }}>
@@ -391,7 +391,7 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
           label={t('SettingsDialog.ShowFSActiveTorr')}
           labelPlacement='start'
         />
-        <FormHelperText margin='none'>{t('SettingsDialog.ShowFSActiveTorrHint')}</FormHelperText>
+        <FormHelperText>{t('SettingsDialog.ShowFSActiveTorrHint')}</FormHelperText>
       </FormGroup>
       {/* Storage Settings Section */}
       <Box mt={4} mb={2}>
@@ -458,7 +458,7 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
           label={t('SettingsDialog.EnableProxy')}
           labelPlacement='start'
         />
-        <FormHelperText margin='none'>{t('SettingsDialog.EnableProxyHint')}</FormHelperText>
+        <FormHelperText>{t('SettingsDialog.EnableProxyHint')}</FormHelperText>
       </FormGroup>
       {/* Proxy hosts */}
       <TextField

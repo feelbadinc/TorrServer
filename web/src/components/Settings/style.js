@@ -6,7 +6,7 @@ import { StyledHeader } from 'style/CustomMaterialUiStyles'
 
 export const cacheBeforeReaderColor = '#b3dfc9'
 
-export const StyledTabs = styled(Tabs)`
+export const StyledTabs = styled(Tabs).withConfig({ shouldForwardProp: prop => prop !== 'variant' })`
   .MuiTabs-flexContainer {
     @media (max-width: 600px) {
       gap: 0;

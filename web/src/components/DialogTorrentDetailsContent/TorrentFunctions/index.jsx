@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { memo } from 'react'
 import { playlistTorrHost, torrentsHost, viewedHost } from 'utils/Hosts'
-
 import { Button } from '@mui/material'
 import ptt from 'parse-torrent-title'
 import { useTranslation } from 'react-i18next'
@@ -74,7 +73,12 @@ const TorrentFunctions = memo(
               </Button>
             </a>
           )}
-          <Button variant='contained' color='primary' size='large' onClick={() => navigator.clipboard.writeText(magnet)}>
+          <Button
+            variant='contained'
+            color='primary'
+            size='large'
+            onClick={() => navigator.clipboard.writeText(magnet)}
+          >
             {t('CopyHash')}
           </Button>
         </MainSectionButtonGroup>

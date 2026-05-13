@@ -254,8 +254,8 @@ export default function RightSideComponent({
           !torrentSource
             ? t('AddDialog.AddTorrentSourceNotification')
             : !isTorrentSourceCorrect
-            ? t('AddDialog.WrongTorrentSource')
-            : isHashAlreadyExists && t('AddDialog.HashExists')
+              ? t('AddDialog.WrongTorrentSource')
+              : isHashAlreadyExists && t('AddDialog.HashExists')
         }
         $isHidden={isEditMode || (isTorrentSourceCorrect && !isHashAlreadyExists)}
       />

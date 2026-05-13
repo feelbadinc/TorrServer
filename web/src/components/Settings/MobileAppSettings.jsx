@@ -27,9 +27,9 @@ export default function MobileAppSettings({
           label={t('SettingsDialog.UseVLC')}
           labelPlacement='start'
         />
-        <FormHelperText margin='none'>{t('SettingsDialog.UseVLCHint')}</FormHelperText>
+        <FormHelperText>{t('SettingsDialog.UseVLCHint')}</FormHelperText>
         {isDesktopPlatform && (
-          <FormHelperText margin='none'>
+          <FormHelperText>
             {t('SettingsDialog.UseVLCDesktopHintPrefix')}{' '}
             <Link
               href='https://github.com/northsea4/vlc-protocol'
@@ -50,7 +50,7 @@ export default function MobileAppSettings({
               label={t('SettingsDialog.UseInfuse')}
               labelPlacement='start'
             />
-            <FormHelperText margin='none'>{t('SettingsDialog.UseInfuseHint')}</FormHelperText>
+            <FormHelperText>{t('SettingsDialog.UseInfuseHint')}</FormHelperText>
           </>
         )}
         {isMac && (
@@ -60,7 +60,7 @@ export default function MobileAppSettings({
               label={t('SettingsDialog.UseIINA')}
               labelPlacement='start'
             />
-            <FormHelperText margin='none'>{t('SettingsDialog.UseIINAHint')}</FormHelperText>
+            <FormHelperText>{t('SettingsDialog.UseIINAHint')}</FormHelperText>
           </>
         )}
       </FormGroup>
