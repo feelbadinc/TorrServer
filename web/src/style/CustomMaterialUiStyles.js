@@ -1,5 +1,5 @@
-import { ListItem } from '@material-ui/core'
-import Dialog from '@material-ui/core/Dialog'
+import { ListItem } from '@mui/material'
+import Dialog from '@mui/material/Dialog'
 import { pwaFooterHeight } from 'components/App/PWAFooter/style'
 import styled, { css } from 'styled-components'
 import { Header } from 'style/DialogStyles'

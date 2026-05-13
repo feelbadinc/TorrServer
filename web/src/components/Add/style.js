@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core'
+import { Button } from '@mui/material'
 import styled, { css } from 'styled-components'
 
 export const Content = styled.div`
@@ -261,7 +261,7 @@ export const Poster = styled.div`
   `}
 `
 
-export const ClearPosterButton = styled(Button)`
+export const ClearPosterButton = styled(Button).withConfig({ shouldForwardProp: prop => prop !== 'variant' })`
   grid-area: clear;
   justify-self: flex-start;
   transform: translateY(-50%);
@@ -273,7 +273,7 @@ export const ClearPosterButton = styled(Button)`
   }
 `
 
-export const UpdatePosterButton = styled(Button)`
+export const UpdatePosterButton = styled(Button).withConfig({ shouldForwardProp: prop => prop !== 'variant' })`
   grid-area: clear;
   justify-self: flex-end;
   transform: translateY(-50%);

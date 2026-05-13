@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTheme } from '@material-ui/core'
+import { useTheme } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 import IconWrapper from './style'

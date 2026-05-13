@@ -1,6 +1,6 @@
-import CssBaseline from '@material-ui/core/CssBaseline'
+import CssBaseline from '@mui/material/CssBaseline'
 import React, { createContext, useEffect, useState } from 'react'
-import Typography from '@material-ui/core/Typography'
+import Typography from '@mui/material/Typography'
 import {
   Menu as MenuIcon,
   Close as CloseIcon,
@@ -10,7 +10,7 @@ import {
   Sort as SortIcon,
   SortByAlpha as SortByAlphaIcon,
   Search as SearchIcon,
-} from '@material-ui/icons'
+} from '@mui/icons-material'
 import { echoHost } from 'utils/Hosts'
 
 import axios from 'axios'
@@ -18,7 +18,7 @@ import TorrentList from 'components/TorrentList'
 import DonateSnackbar from 'components/Donate'
 import DonateDialog from 'components/Donate/DonateDialog'
 import useChangeLanguage from 'utils/useChangeLanguage'
-import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider as MuiThemeProvider, StyledEngineProvider } from '@mui/material/styles'
 import { ThemeProvider as StyledComponentsThemeProvider } from 'styled-components'
 import { useQuery } from 'react-query'
 import { getTorrents, isStandaloneApp } from 'utils/Utils'
@@ -66,7 +66,8 @@ export default function App() {
       <GlobalStyle />
 
       <DarkModeContext.Provider value={{ isDarkMode }}>
-        <MuiThemeProvider theme={muiTheme}>
+        <StyledEngineProvider injectFirst>
+      <MuiThemeProvider theme={muiTheme}>
           <StyledComponentsThemeProvider
             theme={getStyledComponentsTheme(isDarkMode ? THEME_MODES.DARK : THEME_MODES.LIGHT)}
           >
@@ -174,6 +175,7 @@ export default function App() {
             </div>
           </StyledComponentsThemeProvider>
         </MuiThemeProvider>
+      </StyledEngineProvider>
       </DarkModeContext.Provider>
     </>
   )

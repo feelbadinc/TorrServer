@@ -1,8 +1,8 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { USBIcon, RAMIcon } from 'icons'
-import { FormControlLabel, Switch } from '@material-ui/core'
-import TextField from '@material-ui/core/TextField'
+import { FormControlLabel, Switch } from '@mui/material'
+import TextField from '@mui/material/TextField'
 
 import {
   CacheLegendGrid,

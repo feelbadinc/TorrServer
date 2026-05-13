@@ -1,6 +1,6 @@
 import React, { memo, useState } from 'react'
 import isEqual from 'lodash/isEqual'
-import { Button } from '@material-ui/core'
+import { Button } from '@mui/material'
 
 import { useTranslation } from 'react-i18next'
 import ptt from 'parse-torrent-title'

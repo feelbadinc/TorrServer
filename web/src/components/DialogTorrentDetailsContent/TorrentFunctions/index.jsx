@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { memo } from 'react'
 import { playlistTorrHost, torrentsHost, viewedHost } from 'utils/Hosts'
 
-import { Button } from '@material-ui/core'
+import { Button } from '@mui/material'
 import ptt from 'parse-torrent-title'
 import { useTranslation } from 'react-i18next'
 
