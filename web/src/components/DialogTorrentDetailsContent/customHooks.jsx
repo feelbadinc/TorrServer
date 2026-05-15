@@ -7,15 +7,9 @@ export const useUpdateCache = hash => {
   const componentIsMounted = useRef(true)
   const timerID = useRef(null)
 
-  useEffect(
-    () => () => {
-      // this function is required to notify "updateCache" when NOT to make state update
-      componentIsMounted.current = false
-    },
-    [],
-  )
-
   useEffect(() => {
+    componentIsMounted.current = true
+
     if (hash) {
       timerID.current = setInterval(() => {
         const updateCache = newCache => componentIsMounted.current && setCache(newCache)
@@ -23,12 +17,14 @@ export const useUpdateCache = hash => {
         axios
           .post(cacheHost(), { action: 'get', hash })
           .then(({ data }) => updateCache(data))
-          // empty cache if error
           .catch(() => updateCache({}))
       }, 100)
     } else clearInterval(timerID.current)
 
-    return () => clearInterval(timerID.current)
+    return () => {
+      componentIsMounted.current = false
+      clearInterval(timerID.current)
+    }
   }, [hash])
 
   return cache
