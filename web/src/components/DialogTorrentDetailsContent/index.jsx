@@ -42,8 +42,6 @@ export default function DialogTorrentDetailsContent({ closeDialog, torrent }) {
   const [isLoading, setIsLoading] = useState(true)
   const [isDetailedCacheView, setIsDetailedCacheView] = useState(false)
   const [viewedFileList, setViewedFileList] = useState()
-  const [seasonAmount, setSeasonAmount] = useState(null)
-  const [selectedSeason, setSelectedSeason] = useState()
   const [isSnakeDebugMode] = useState(JSON.parse(localStorage.getItem('isSnakeDebugMode')) || false)
 
   const {
@@ -66,19 +64,23 @@ export default function DialogTorrentDetailsContent({ closeDialog, torrent }) {
 
   const playableFileList = useMemo(() => torrentFileList?.filter(({ path }) => isFilePlayable(path)), [torrentFileList])
 
+  const seasonAmount = useMemo(() => {
+    if (!playableFileList) return null
+    const seasons = []
+    playableFileList.forEach(({ path }) => {
+      const currentSeason = ptt.parse(path).season
+      if (currentSeason && !seasons.includes(currentSeason)) seasons.push(currentSeason)
+    })
+    return seasons.sort((a, b) => a - b)
+  }, [playableFileList])
+  const [selectedSeason, setSelectedSeason] = useState(seasonAmount?.[0])
+
   useEffect(() => {
-    if (playableFileList && seasonAmount === null) {
-      const seasons = []
-      playableFileList.forEach(({ path }) => {
-        const currentSeason = ptt.parse(path).season
-        if (currentSeason) {
-          !seasons.includes(currentSeason) && seasons.push(currentSeason)
-        }
-      })
-      seasons.length && setSelectedSeason(seasons[0])
-      setSeasonAmount(seasons.sort((a, b) => a - b))
+    if (seasonAmount?.length && selectedSeason === undefined) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setSelectedSeason(seasonAmount[0])
     }
-  }, [playableFileList, seasonAmount])
+  }, [seasonAmount, selectedSeason])
 
   useEffect(() => {
     const cacheLoaded = !!Object.entries(cache).length

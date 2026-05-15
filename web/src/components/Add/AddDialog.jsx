@@ -46,7 +46,7 @@ export default function AddDialog({
   const [parsedTitle, setParsedTitle] = useState('')
   const [posterUrl, setPosterUrl] = useState(originalPoster || '')
   const [isPosterUrlCorrect, setIsPosterUrlCorrect] = useState(false)
-  const [isTorrentSourceCorrect, setIsTorrentSourceCorrect] = useState(false)
+  const isTorrentSourceCorrect = useMemo(() => checkTorrentSource(torrentSource), [torrentSource])
   const [posterList, setPosterList] = useState()
   const [isUserInteractedWithPoster, setIsUserInteractedWithPoster] = useState(isEditMode)
   const [currentLang] = useChangeLanguage()
@@ -103,6 +103,7 @@ export default function AddDialog({
 
   useEffect(() => {
     if (!torrentSource) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setTitle('')
       setOriginalTorrentTitle('')
       setParsedTitle('')
@@ -117,6 +118,7 @@ export default function AddDialog({
   useEffect(() => {
     if (!originalHash || (!originalName && !originalTitle)) return
     const source = originalName || originalTitle
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setOriginalTorrentTitle(source)
     try {
       const parsed = ptt.parse(source)
@@ -174,16 +176,13 @@ export default function AddDialog({
   const prevTorrentSourceState = usePreviousState(torrentSource)
 
   useEffect(() => {
-    const isCorrectSource = checkTorrentSource(torrentSource)
-    if (!isCorrectSource) return setIsTorrentSourceCorrect(false)
-
-    setIsTorrentSourceCorrect(true)
+    if (!isTorrentSourceCorrect) return
 
     const torrentSourceChanged = torrentSource !== prevTorrentSourceState
     if (!torrentSourceChanged) return
 
     updateTitleFromSource()
-  }, [prevTorrentSourceState, torrentSource, updateTitleFromSource])
+  }, [prevTorrentSourceState, torrentSource, updateTitleFromSource, isTorrentSourceCorrect])
 
   // Edit mode: auto-search poster once when we have title and no poster
   useEffect(() => {
@@ -198,6 +197,7 @@ export default function AddDialog({
     const searchTitle = parsedTitle || title || originalTitle
     if (!shortenTitleForPosterSearch(searchTitle)) return
     editModePosterSearchedRef.current = true
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     posterSearch(searchTitle, posterSearchLanguage, { shouldRefreshMainPoster: true })
   }, [originalHash, originalPoster, parsedTitle, originalTitle, title, posterSearchLanguage, posterSearch])
 
@@ -208,6 +208,7 @@ export default function AddDialog({
     if (!titleChanged && !parsedTitle) return
 
     if (skipDebounce) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       posterSearch(title || parsedTitle, posterSearchLanguage)
       setSkipDebounce(false)
     } else if (!title) {
