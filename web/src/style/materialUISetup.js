@@ -8,21 +8,35 @@ export const THEME_MODES = { LIGHT: 'light', DARK: 'dark', AUTO: 'auto' }
 
 const typography = { fontFamily: 'Open Sans, sans-serif' }
 
+const breakpoints = { values: { xs: 0, sm: 600, md: 960, lg: 1280, xl: 1920 } }
+
+const cssBaselineOverride = {
+  MuiCssBaseline: {
+    styleOverrides: {
+      body: { fontSize: '14px' },
+    },
+  },
+}
+
 export const darkTheme = createTheme({
   typography,
+  breakpoints,
   palette: {
     mode: THEME_MODES.DARK,
     primary: { main: mainColors.dark.primary },
     secondary: { main: mainColors.dark.secondary },
   },
+  components: cssBaselineOverride,
 })
 export const lightTheme = createTheme({
   typography,
+  breakpoints,
   palette: {
     mode: THEME_MODES.LIGHT,
     primary: { main: mainColors.light.primary },
     secondary: { main: mainColors.light.secondary },
   },
+  components: cssBaselineOverride,
 })
 
 export const useMaterialUITheme = () => {
@@ -48,12 +62,14 @@ export const useMaterialUITheme = () => {
     () =>
       createTheme({
         typography,
+        breakpoints,
         palette: {
           mode: theme,
           primary: { main: mainColors[theme].primary },
           secondary: { main: mainColors[theme].secondary },
         },
         components: {
+          ...cssBaselineOverride,
           MuiTypography: {
             styleOverrides: {
               h6: {
@@ -65,6 +81,7 @@ export const useMaterialUITheme = () => {
             styleOverrides: {
               root: {
                 backgroundColor: themeColors[theme].app.paperColor,
+                backgroundImage: 'none',
               },
             },
           },
@@ -95,6 +112,40 @@ export const useMaterialUITheme = () => {
                 '&.Mui-focused': {
                   color: mainColors[theme].labels,
                 },
+              },
+            },
+          },
+          MuiIconButton: {
+            styleOverrides: {
+              root: {
+                padding: 12,
+              },
+            },
+          },
+          MuiMenuItem: {
+            styleOverrides: {
+              root: {
+                '&.Mui-selected': {
+                  backgroundColor: theme === THEME_MODES.DARK ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)',
+                  '&:hover': {
+                    backgroundColor: theme === THEME_MODES.DARK ? 'rgba(255, 255, 255, 0.12)' : 'rgba(0, 0, 0, 0.12)',
+                  },
+                },
+              },
+            },
+          },
+          MuiListItemIcon: {
+            styleOverrides: {
+              root: {
+                minWidth: 56,
+              },
+            },
+          },
+          MuiListItemButton: {
+            styleOverrides: {
+              root: {
+                paddingTop: 8,
+                paddingBottom: 8,
               },
             },
           },

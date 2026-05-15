@@ -26,28 +26,34 @@ export default function SliderInput({
   return (
     <>
       <div>{title}</div>
-
-      <Grid container spacing={2} alignItems='center'>
-        <Grid item xs>
+      <Grid
+        container
+        spacing={2}
+        sx={{
+          alignItems: 'center',
+        }}
+      >
+        <Grid size='grow'>
           <Slider
             min={sliderMin}
             max={sliderMax}
             value={value}
             onChange={onSliderChange}
             step={step}
+            size='small'
             color='secondary'
           />
         </Grid>
 
         {isProMode && (
-          <Grid item>
+          <Grid>
             <OutlinedInput
               value={value}
-              margin='dense'
+              size='small'
               onChange={onInputChange}
               onBlur={onBlur}
               style={{ width: '91px', marginTop: '-6px' }}
-              inputProps={{ step, min: inputMin, max: inputMax, type: 'number' }}
+              slotProps={{ htmlInput: { step, min: inputMin, max: inputMax, type: 'number' } }}
             />
           </Grid>
         )}

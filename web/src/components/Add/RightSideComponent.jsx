@@ -81,13 +81,16 @@ export default function RightSideComponent({
             <TextField
               value={originalTorrentTitle}
               margin='dense'
+              size='small'
               label={t('AddDialog.OriginalTorrentTitle')}
               style={{ marginTop: '1em' }}
               type='text'
               variant='outlined'
               fullWidth
               disabled={isCustomTitleEnabled}
-              InputProps={{ readOnly: true }}
+              slotProps={{
+                input: { readOnly: true },
+              }}
             />
             <TextField
               onChange={handleTitleChange}
@@ -95,28 +98,31 @@ export default function RightSideComponent({
               onBlur={({ target: { value } }) => !value && setIsCustomTitleEnabled(false)}
               value={title}
               margin='dense'
+              size='small'
               label={t('AddDialog.CustomTorrentTitle')}
               type='text'
               variant='outlined'
               fullWidth
               helperText={t('AddDialog.CustomTorrentTitleHelperText')}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position='end'>
-                    <IconButton
-                      size='small'
-                      style={{ padding: '1px', marginRight: '-6px' }}
-                      onClick={() => {
-                        setTitle('')
-                        setIsCustomTitleEnabled(!isCustomTitleEnabled)
-                        updateTitleFromSource()
-                        setIsUserInteractedWithPoster(false)
-                      }}
-                    >
-                      <HighlightOffIcon style={{ color: isCustomTitleEnabled ? primary : rgba('#ccc', 0.25) }} />
-                    </IconButton>
-                  </InputAdornment>
-                ),
+              slotProps={{
+                input: {
+                  endAdornment: (
+                    <InputAdornment position='end'>
+                      <IconButton
+                        size='small'
+                        style={{ padding: '1px', marginRight: '-6px' }}
+                        onClick={() => {
+                          setTitle('')
+                          setIsCustomTitleEnabled(!isCustomTitleEnabled)
+                          updateTitleFromSource()
+                          setIsUserInteractedWithPoster(false)
+                        }}
+                      >
+                        <HighlightOffIcon style={{ color: isCustomTitleEnabled ? primary : rgba('#ccc', 0.25) }} />
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                },
               }}
             />
           </>
@@ -125,6 +131,7 @@ export default function RightSideComponent({
             onChange={handleTitleChange}
             value={title}
             margin='dense'
+            size='small'
             label={t('AddDialog.TitleBlank')}
             style={{ marginTop: '1em' }}
             type='text'
@@ -137,6 +144,7 @@ export default function RightSideComponent({
           onChange={handlePosterUrlChange}
           value={posterUrl}
           margin='dense'
+          size='small'
           label={t('AddDialog.AddPosterLinkInput')}
           type='url'
           variant='outlined'
@@ -150,7 +158,7 @@ export default function RightSideComponent({
             labelId='torrent-category-select-label'
             id='torrent-category-select'
             value={category}
-            margin='dense'
+            size='small'
             onChange={handleCategoryChange}
             variant='outlined'
             fullWidth
@@ -247,7 +255,6 @@ export default function RightSideComponent({
           </UpdatePosterButton>
         </PosterWrapper>
       </RightSideContainer>
-
       <RightSideContainer
         $isError={torrentSource && (!isTorrentSourceCorrect || isHashAlreadyExists)}
         $notificationMessage={

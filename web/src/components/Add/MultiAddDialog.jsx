@@ -3,7 +3,16 @@ import Button from '@mui/material/Button'
 import { torrentUploadHost } from 'utils/Hosts'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
-import { useMediaQuery, TextField, FormControl, FormHelperText, Select, MenuItem, IconButton } from '@mui/material'
+import {
+  useMediaQuery,
+  useTheme,
+  TextField,
+  FormControl,
+  FormHelperText,
+  Select,
+  MenuItem,
+  IconButton,
+} from '@mui/material'
 import CircularProgress from '@mui/material/CircularProgress'
 import { Delete as DeleteIcon } from '@mui/icons-material'
 import { ButtonWrapper } from 'style/DialogStyles'
@@ -11,7 +20,7 @@ import { StyledDialog, StyledHeader } from 'style/CustomMaterialUiStyles'
 import useOnStandaloneAppOutsideClick from 'utils/useOnStandaloneAppOutsideClick'
 import { TORRENT_CATEGORIES } from 'components/categories'
 import { NoImageIcon } from 'icons'
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import { getTorrents } from 'utils/Utils'
 import useChangeLanguage from 'utils/useChangeLanguage'
 import parseTorrent from 'parse-torrent'
@@ -96,18 +105,20 @@ function FileRow({ file, fileState, index, onUpdate, onRemove, existingTorrents 
           onChange={handlePosterChange}
           value={fileState.poster}
           margin='dense'
+          size='small'
           label={t('AddDialog.AddPosterLinkInput')}
           type='url'
           variant='outlined'
           fullWidth
-          size='small'
         />
 
         <FormControl fullWidth size='small' style={{ marginTop: 4 }}>
-          <FormHelperText style={{ padding: '0 0.5em' }}>{t('AddDialog.CategoryHelperText')}</FormHelperText>
+          <FormHelperText style={{ padding: '0 0.5em', marginLeft: 0 }}>
+            {t('AddDialog.CategoryHelperText')}
+          </FormHelperText>
           <Select
             value={fileState.category}
-            margin='dense'
+            size='small'
             onChange={handleCategoryChange}
             variant='outlined'
             fullWidth
@@ -134,11 +145,16 @@ function FileRow({ file, fileState, index, onUpdate, onRemove, existingTorrents 
 
 export default function MultiAddDialog({ files, handleClose }) {
   const { t } = useTranslation()
-  const fullScreen = useMediaQuery('@media (max-width:930px)')
+  const theme = useTheme()
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'))
   const ref = useOnStandaloneAppOutsideClick(handleClose)
   const [isSaving, setIsSaving] = useState(false)
 
-  const { data: torrents } = useQuery('torrents', getTorrents, { retry: 1 })
+  const { data: torrents } = useQuery({
+    queryKey: ['torrents'],
+    queryFn: getTorrents,
+    retry: 1,
+  })
   const existingTorrents = torrents || []
 
   const [fileList, setFileList] = useState(() =>

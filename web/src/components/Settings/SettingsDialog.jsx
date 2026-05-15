@@ -23,8 +23,9 @@ import TMDBSettings from './TMDBSettings'
 
 export default function SettingsDialog({ handleClose }) {
   const { t } = useTranslation()
-  const fullScreen = useMediaQuery('@media (max-width:930px)')
-  const { direction } = useTheme()
+  const theme = useTheme()
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'))
+  const { direction } = theme
 
   const [settings, setSettings] = useState()
   const [selectedTab, setSelectedTab] = useState(0)
@@ -104,7 +105,15 @@ export default function SettingsDialog({ handleClose }) {
   })
 
   return (
-    <StyledDialog open onClose={handleClose} fullScreen={fullScreen} fullWidth maxWidth='md' ref={ref}>
+    <StyledDialog
+      open
+      onClose={handleClose}
+      fullScreen={fullScreen}
+      fullWidth
+      maxWidth='md'
+      ref={ref}
+      slotProps={fullScreen ? undefined : { paper: { style: { height: 'calc(100vh - 64px)' } } }}
+    >
       <SettingsHeader>
         <div>{t('SettingsDialog.Settings')}</div>
         <FormControlLabel
@@ -124,7 +133,7 @@ export default function SettingsDialog({ handleClose }) {
         />
       </SettingsHeader>
 
-      <AppBar position='static' color='default'>
+      <AppBar position='relative' color='transparent' elevation={4}>
         <StyledTabs
           value={selectedTab}
           onChange={handleChange}
@@ -155,10 +164,11 @@ export default function SettingsDialog({ handleClose }) {
       <Content $isLoading={!settings}>
         {settings ? (
           <>
-            <div {...swipeHandlers} style={{ overflow: 'hidden' }}>
+            <div {...swipeHandlers} style={{ height: '100%', overflow: 'hidden' }}>
               <div
                 style={{
                   display: 'flex',
+                  height: '100%',
                   transform: `translateX(${direction === 'rtl' ? selectedTab * 100 : -(selectedTab * 100)}%)`,
                   transition: 'transform 0.3s ease-out',
                 }}
@@ -168,7 +178,7 @@ export default function SettingsDialog({ handleClose }) {
                     settings={settings}
                     inputForm={inputForm}
                     cachePercentage={cachePercentage}
-                    $preloadCachePercentage={preloadCachePercentage}
+                    preloadCachePercentage={preloadCachePercentage}
                     cacheSize={cacheSize}
                     isProMode={isProMode}
                     setCacheSize={setCacheSize}

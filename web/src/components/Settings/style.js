@@ -102,7 +102,7 @@ export const Content = styled.div`
     },
   }) => css`
     background: ${contentBG};
-    overflow: auto;
+    overflow: hidden;
     flex: 1;
 
     ${$isLoading &&

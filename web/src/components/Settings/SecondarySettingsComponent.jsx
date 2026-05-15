@@ -19,15 +19,14 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { SecondarySettingsContent, SettingSectionLabel } from './style'
 
 // Create a styled status message component
-const StatusMessage = styled('div')(({ theme, severity }) => ({
+const StatusMessage = styled('div')(({ theme }) => ({
   padding: theme.spacing(1.5, 2),
   marginTop: theme.spacing(1),
   borderRadius: theme.shape.borderRadius,
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  backgroundColor:
-    severity === 'error' ? '#f44336' : severity === 'success' ? '#4caf50' : severity === 'info' ? '#2196f3' : '#ff9800',
+  backgroundColor: '#ff9800',
   color: 'white',
   '& button': {
     color: 'white',
@@ -35,6 +34,11 @@ const StatusMessage = styled('div')(({ theme, severity }) => ({
     padding: '4px 8px',
     marginLeft: theme.spacing(1),
   },
+  variants: [
+    { props: { severity: 'error' }, style: { backgroundColor: '#f44336' } },
+    { props: { severity: 'success' }, style: { backgroundColor: '#4caf50' } },
+    { props: { severity: 'info' }, style: { backgroundColor: '#2196f3' } },
+  ],
 }))
 
 export default function SecondarySettingsComponent({ settings, inputForm }) {
@@ -207,13 +211,15 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
         margin='normal'
         id='TorrentDisconnectTimeout'
         label={t('SettingsDialog.TorrentDisconnectTimeout')}
-        InputProps={{
-          endAdornment: <InputAdornment position='end'>{t('Seconds')}</InputAdornment>,
-        }}
         value={TorrentDisconnectTimeout}
         type='number'
         variant='outlined'
         fullWidth
+        slotProps={{
+          input: {
+            endAdornment: <InputAdornment position='end'>{t('Seconds')}</InputAdornment>,
+          },
+        }}
       />
       <br />
       <TextField
@@ -241,13 +247,15 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
         margin='normal'
         id='DownloadRateLimit'
         label={t('SettingsDialog.DownloadRateLimit')}
-        InputProps={{
-          endAdornment: <InputAdornment position='end'>{t('Kilobytes')}</InputAdornment>,
-        }}
         value={DownloadRateLimit}
         type='number'
         variant='outlined'
         fullWidth
+        slotProps={{
+          input: {
+            endAdornment: <InputAdornment position='end'>{t('Kilobytes')}</InputAdornment>,
+          },
+        }}
       />
       <br />
       <FormGroup>
@@ -263,13 +271,15 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
         margin='normal'
         id='UploadRateLimit'
         label={t('SettingsDialog.UploadRateLimit')}
-        InputProps={{
-          endAdornment: <InputAdornment position='end'>{t('Kilobytes')}</InputAdornment>,
-        }}
         value={UploadRateLimit}
         type='number'
         variant='outlined'
         fullWidth
+        slotProps={{
+          input: {
+            endAdornment: <InputAdornment position='end'>{t('Kilobytes')}</InputAdornment>,
+          },
+        }}
       />
       <br />
       <TextField
@@ -309,16 +319,17 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
       </FormGroup>
       <br />
       <FormGroup style={{ marginBottom: '20px' }}>
-        <InputLabel htmlFor='RetrackersMode'>{t('SettingsDialog.RetrackersMode')}</InputLabel>
+        <InputLabel htmlFor='RetrackersMode' sx={{ lineHeight: 1.15 }}>
+          {t('SettingsDialog.RetrackersMode')}
+        </InputLabel>
         <Select
           native
-          type='number'
           id='RetrackersMode'
           name='RetrackersMode'
           value={RetrackersMode}
           onChange={inputForm}
           variant='outlined'
-          margin='dense'
+          size='small'
         >
           <option value={0}>{t('SettingsDialog.DontAddRetrackers')}</option>
           <option value={1}>{t('SettingsDialog.AddRetrackers')}</option>
@@ -394,18 +405,25 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
         <FormHelperText>{t('SettingsDialog.ShowFSActiveTorrHint')}</FormHelperText>
       </FormGroup>
       {/* Storage Settings Section */}
-      <Box mt={4} mb={2}>
+      <Box
+        sx={{
+          mt: 4,
+          mb: 2,
+        }}
+      >
         <SettingSectionLabel>{t('SettingsDialog.StorageConfiguration')}</SettingSectionLabel>
 
         <FormGroup>
-          <InputLabel htmlFor='settings'>{t('SettingsDialog.SettingsStorage')}</InputLabel>
+          <InputLabel htmlFor='settings' sx={{ lineHeight: 1.15 }}>
+            {t('SettingsDialog.SettingsStorage')}
+          </InputLabel>
           <Select
             id='settings'
             name='settings'
             value={storageSettings.settings || 'json'}
             onChange={handleStorageChange}
             variant='outlined'
-            margin='dense'
+            size='small'
           >
             <MenuItem value='json'>{t('SettingsDialog.JsonFile')} (settings.json)</MenuItem>
             <MenuItem value='bbolt'>{t('SettingsDialog.BBoltDatabase')} (config.db)</MenuItem>
@@ -414,14 +432,16 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
         </FormGroup>
 
         <FormGroup style={{ marginTop: '16px' }}>
-          <InputLabel htmlFor='viewed'>{t('SettingsDialog.ViewedHistoryStorage')}</InputLabel>
+          <InputLabel htmlFor='viewed' sx={{ lineHeight: 1.15 }}>
+            {t('SettingsDialog.ViewedHistoryStorage')}
+          </InputLabel>
           <Select
             id='viewed'
             name='viewed'
             value={storageSettings.viewed || 'bbolt'}
             onChange={handleStorageChange}
             variant='outlined'
-            margin='dense'
+            size='small'
           >
             <MenuItem value='bbolt'>{t('SettingsDialog.BBoltDatabase')} (config.db)</MenuItem>
             <MenuItem value='json'>{t('SettingsDialog.JsonFile')} (viewed.json)</MenuItem>
@@ -429,7 +449,12 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
           <FormHelperText style={{ marginTop: '8px' }}>{t('SettingsDialog.ViewedStorageHint')}</FormHelperText>
         </FormGroup>
 
-        <Box mt={2} mb={2}>
+        <Box
+          sx={{
+            mt: 2,
+            mb: 2,
+          }}
+        >
           <Button
             variant='contained'
             color='primary'

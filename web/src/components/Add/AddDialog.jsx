@@ -5,10 +5,10 @@ import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import debounce from 'lodash/debounce'
 import useChangeLanguage from 'utils/useChangeLanguage'
-import { useMediaQuery } from '@mui/material'
+import { useMediaQuery, useTheme } from '@mui/material'
 import CircularProgress from '@mui/material/CircularProgress'
 import usePreviousState from 'utils/usePreviousState'
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import { getTorrents } from 'utils/Utils'
 import parseTorrent from 'parse-torrent'
 import ptt from 'parse-torrent-title'
@@ -37,6 +37,7 @@ export default function AddDialog({
   category: originalCategory,
 }) {
   const { t } = useTranslation()
+  const theme = useTheme()
   const isEditMode = !!originalHash
   const [torrentSource, setTorrentSource] = useState(originalHash || '')
   const [title, setTitle] = useState(originalTitle || '')
@@ -62,7 +63,7 @@ export default function AddDialog({
 
   const ref = useOnStandaloneAppOutsideClick(handleClose)
 
-  const { data: torrents } = useQuery('torrents', getTorrents, { retry: 1, refetchInterval: 1000 })
+  const { data: torrents } = useQuery({ queryKey: ['torrents'], queryFn: getTorrents, retry: 1, refetchInterval: 1000 })
 
   useEffect(() => {
     parseTorrent.remote(torrentSource, (_, { infoHash } = {}) => setCurrentSourceHash(infoHash))
@@ -84,7 +85,7 @@ export default function AddDialog({
     torrentSource.match(linkRegex) !== null && handleClose()
   }, [isSaving, torrents, torrentSource, currentSourceHash, handleClose])
 
-  const fullScreen = useMediaQuery('@media (max-width:930px)')
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'))
 
   const updateTitleFromSource = useCallback(() => {
     parseTorrentTitle(torrentSource, ({ parsedTitle, originalName }) => {

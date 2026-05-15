@@ -19,7 +19,7 @@ export default function CloseServer({ isOffline, isLoading }) {
 
   return (
     <>
-      <StyledMenuButtonWrapper disabled={isOffline || isLoading} button key={t('CloseServer')} onClick={openDialog}>
+      <StyledMenuButtonWrapper disabled={isOffline || isLoading} onClick={openDialog}>
         {isStandaloneApp ? (
           <>
             <PowerSettingsNewIcon />

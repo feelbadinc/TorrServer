@@ -10,6 +10,7 @@ import {
   Tooltip,
   Typography,
   useMediaQuery,
+  useTheme,
 } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import Forward10Icon from '@mui/icons-material/Forward10'
@@ -136,7 +137,8 @@ const formatTime = seconds => {
 }
 
 const VideoPlayer = ({ videoSrc, captionSrc = '', title, onNotSupported }) => {
-  const isMobile = useMediaQuery('@media (max-width:930px)')
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const videoRef = useRef(null)
   const { t } = useTranslation()
   const [open, setOpen] = useState(false)
@@ -257,10 +259,9 @@ const VideoPlayer = ({ videoSrc, captionSrc = '', title, onNotSupported }) => {
         maxWidth='lg'
         fullWidth
         fullScreen={isMobile}
-        PaperProps={{ sx: { backgroundColor: '#fff', borderRadius: 1 } }}
+        slotProps={{ paper: { sx: { backgroundColor: '#fff', borderRadius: 1 } } }}
       >
         <DialogTitle
-          disableTypography
           sx={{
             backgroundColor: '#00a572',
             color: '#fff',
@@ -426,7 +427,11 @@ const VideoPlayer = ({ videoSrc, captionSrc = '', title, onNotSupported }) => {
                     </Typography>
                   </Box>
                 )}
-                <Box flexGrow={1} />
+                <Box
+                  sx={{
+                    flexGrow: 1,
+                  }}
+                />
                 <Tooltip title={t('Speed')}>
                   <IconButton size='medium' onClick={openSpeedMenu} sx={iconButtonSx}>
                     <SpeedIcon fontSize='medium' />
@@ -454,7 +459,6 @@ const VideoPlayer = ({ videoSrc, captionSrc = '', title, onNotSupported }) => {
                     <GetAppIcon fontSize='medium' />
                   </IconButton>
                 </Tooltip>
-
                 <Tooltip title={fullscreen ? t('ExitFullscreen') : t('Fullscreen')}>
                   <IconButton size='medium' onClick={fullscreen ? exitFull : enterFull} sx={iconButtonSx}>
                     {fullscreen ? <FullscreenExitIcon fontSize='medium' /> : <FullscreenIcon fontSize='medium' />}
@@ -468,5 +472,4 @@ const VideoPlayer = ({ videoSrc, captionSrc = '', title, onNotSupported }) => {
     </>
   )
 }
-
 export default VideoPlayer

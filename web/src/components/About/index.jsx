@@ -5,7 +5,7 @@ import InfoIcon from '@mui/icons-material/Info'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import { useTranslation } from 'react-i18next'
-import { useMediaQuery } from '@mui/material'
+import { useMediaQuery, useTheme } from '@mui/material'
 import { echoHost } from 'utils/Hosts'
 import { StyledDialog, StyledMenuButtonWrapper } from 'style/CustomMaterialUiStyles'
 import { isStandaloneApp } from 'utils/Utils'
@@ -16,9 +16,10 @@ import { DialogWrapper, HeaderSection, ThanksSection, Section, FooterSection } f
 
 export default function AboutDialog() {
   const { t } = useTranslation()
+  const theme = useTheme()
   const [open, setOpen] = useState(false)
   const [torrServerVersion, setTorrServerVersion] = useState('')
-  const fullScreen = useMediaQuery('@media (max-width:930px)')
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'))
   useEffect(() => {
     axios.get(echoHost()).then(({ data }) => setTorrServerVersion(data))
   }, [])
@@ -34,7 +35,7 @@ export default function AboutDialog() {
 
   return (
     <>
-      <StyledMenuButtonWrapper button key='Settings' onClick={() => setOpen(true)}>
+      <StyledMenuButtonWrapper onClick={() => setOpen(true)}>
         {isStandaloneApp ? (
           <>
             <InfoIcon />

@@ -17,7 +17,7 @@ export default function AddDialogButton({ isOffline, isLoading }) {
 
   return (
     <div>
-      <StyledMenuButtonWrapper disabled={isOffline || isLoading} button onClick={handleClickOpen}>
+      <StyledMenuButtonWrapper disabled={isOffline || isLoading} onClick={handleClickOpen}>
         {isStandaloneApp ? (
           <StyledPWAAddButton />
         ) : (

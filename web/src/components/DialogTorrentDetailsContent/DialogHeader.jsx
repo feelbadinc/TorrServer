@@ -6,18 +6,23 @@ import { isStandaloneApp } from 'utils/Utils'
 
 export default function DialogHeader({ title, onClose, onBack }) {
   return (
-    <AppBar sx={{ position: 'relative', ...(isStandaloneApp && { paddingTop: '30px' }) }}>
+    <AppBar
+      sx={[
+        {
+          position: 'relative',
+        },
+        isStandaloneApp && { paddingTop: '30px' },
+      ]}
+    >
       <Toolbar>
         {onBack && (
           <IconButton edge='start' color='inherit' onClick={onBack} aria-label='back'>
             <ArrowBack />
           </IconButton>
         )}
-
         <Typography variant='h6' sx={{ marginLeft: '5px', flex: 1 }}>
           {title}
         </Typography>
-
         <IconButton autoFocus color='inherit' onClick={onClose} aria-label='close' style={{ marginRight: '-10px' }}>
           <CloseIcon />
         </IconButton>

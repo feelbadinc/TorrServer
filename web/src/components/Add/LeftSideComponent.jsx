@@ -36,6 +36,7 @@ export default function LeftSideComponent({
           onChange={handleTorrentSourceChange}
           value={torrentSource}
           margin='dense'
+          size='small'
           label={t('AddDialog.TorrentSourceLink')}
           helperText={t('AddDialog.TorrentSourceOptions')}
           style={{ marginTop: '1em' }}
@@ -44,10 +45,11 @@ export default function LeftSideComponent({
           variant='outlined'
           onFocus={() => setIsTorrentSourceActive(true)}
           onBlur={() => setIsTorrentSourceActive(false)}
-          inputProps={{ autoComplete: 'off' }}
+          slotProps={{
+            htmlInput: { autoComplete: 'off' },
+          }}
         />
       </LeftSideTopSection>
-
       <LeftSideBottomSectionNoFile $isDragActive={isDragActive} {...getRootProps()}>
         <input {...getInputProps()} />
         <div>{t('AddDialog.AppendFile.Or')}</div>

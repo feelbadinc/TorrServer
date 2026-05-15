@@ -10,7 +10,6 @@ import {
   List,
   ListItem,
   ListItemText,
-  ListItemSecondaryAction,
   IconButton,
   Typography,
 } from '@mui/material'
@@ -92,7 +91,6 @@ export default function TorznabSettings({ settings, inputForm, updateSettings })
         />
         <FormHelperText>{t('Torznab.EnableSearchViaTorznab')}</FormHelperText>
       </FormGroup>
-
       <div
         style={{
           padding: '20px 0',
@@ -102,27 +100,39 @@ export default function TorznabSettings({ settings, inputForm, updateSettings })
       >
         <List dense>
           {(TorznabUrls || []).map((url, index) => (
-            <ListItem key={`${url.Host}-${url.Key}`} style={{ paddingLeft: 0, paddingRight: 48 }}>
+            <ListItem
+              key={`${url.Host}-${url.Key}`}
+              style={{ paddingLeft: 0 }}
+              secondaryAction={
+                <IconButton edge='end' aria-label='delete' onClick={() => handleDelete(index)}>
+                  <DeleteIcon />
+                </IconButton>
+              }
+            >
               <ListItemText
                 primary={url.Name || url.Host}
                 secondary={
                   <>
                     {url.Name && (
-                      <Typography component='span' variant='body2' display='block' color='textSecondary'>
+                      <Typography
+                        component='span'
+                        variant='body2'
+                        sx={{
+                          display: 'block',
+                          color: 'text.secondary',
+                        }}
+                      >
                         {url.Host}
                       </Typography>
                     )}
                     {`Key: ${url.Key.substring(0, 5)}...`}
                   </>
                 }
-                primaryTypographyProps={{ style: { wordBreak: 'break-all' } }}
-                secondaryTypographyProps={{ style: { wordBreak: 'break-all' } }}
+                slotProps={{
+                  primary: { style: { wordBreak: 'break-all' } },
+                  secondary: { style: { wordBreak: 'break-all' } },
+                }}
               />
-              <ListItemSecondaryAction>
-                <IconButton edge='end' aria-label='delete' onClick={() => handleDelete(index)}>
-                  <DeleteIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
             </ListItem>
           ))}
         </List>

@@ -324,9 +324,9 @@ export const MultiFileRow = styled.div`
     0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 1px 2px rgba(0, 0, 0, 0.08);
   display: grid;
-  grid-template-columns: 80px 1fr auto;
+  grid-template-columns: 80px 1fr 48px;
   gap: 12px;
-  align-items: start;
+  align-items: center;
   transition: box-shadow 0.2s;
 
   &:hover {

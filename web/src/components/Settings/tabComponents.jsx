@@ -10,7 +10,7 @@ export const TabPanel = ({ children, value, index, ...other }) => (
     id={`full-width-tabpanel-${index}`}
     aria-labelledby={`full-width-tab-${index}`}
     aria-hidden={value !== index}
-    style={{ width: '100%', flexShrink: 0 }}
+    style={{ width: '100%', flexShrink: 0, height: '100%', overflowY: 'auto' }}
     {...other}
   >
     {children}

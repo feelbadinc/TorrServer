@@ -4,17 +4,18 @@ import {
   Button,
   List,
   ListItem,
+  ListItemButton,
   ListItemText,
   CircularProgress,
   Typography,
   Divider,
-  ListItemSecondaryAction,
   IconButton,
   Select,
   MenuItem,
   FormControl,
   InputLabel,
   useMediaQuery,
+  useTheme,
 } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import axios from 'axios'
@@ -24,13 +25,14 @@ import { parseSizeToBytes, formatSizeToClassicUnits } from 'utils/Utils'
 
 export default function TorznabSearch({ onSelect }) {
   const { t } = useTranslation()
+  const theme = useTheme()
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
   const [loading, setLoading] = useState(false)
   const [searched, setSearched] = useState(false)
   const [sortField, setSortField] = useState('') // '', 'size', 'seeds', 'peers'
   const [sortDirection, setSortDirection] = useState('desc') // 'asc' or 'desc'
-  const isMobile = useMediaQuery('(max-width:600px)')
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
   const handleSearch = async () => {
     if (!query) return
@@ -183,24 +185,9 @@ export default function TorznabSearch({ onSelect }) {
                   const formattedSize = formatSizeToClassicUnits(sizeBytes)
                   return (
                     <React.Fragment key={item.Hash || item.Link || index}>
-                      <ListItem button onClick={() => onSelect(item.Magnet || item.Link)}>
-                        <ListItemText
-                          primary={item.Title}
-                          secondary={`${formattedSize} • S:${item.Seed || 0} P:${item.Peer || 0}`}
-                          primaryTypographyProps={{
-                            noWrap: !isMobile,
-                            style: {
-                              fontSize: isMobile ? '0.85rem' : '0.9rem',
-                              whiteSpace: isMobile ? 'normal' : 'nowrap',
-                            },
-                          }}
-                          secondaryTypographyProps={{
-                            style: {
-                              fontSize: isMobile ? '0.75rem' : '0.8rem',
-                            },
-                          }}
-                        />
-                        <ListItemSecondaryAction>
+                      <ListItem
+                        disablePadding
+                        secondaryAction={
                           <IconButton
                             edge='end'
                             aria-label='add'
@@ -209,7 +196,29 @@ export default function TorznabSearch({ onSelect }) {
                           >
                             <AddIcon />
                           </IconButton>
-                        </ListItemSecondaryAction>
+                        }
+                      >
+                        <ListItemButton onClick={() => onSelect(item.Magnet || item.Link)}>
+                          <ListItemText
+                            primary={item.Title}
+                            secondary={`${formattedSize} • S:${item.Seed || 0} P:${item.Peer || 0}`}
+                            slotProps={{
+                              primary: {
+                                noWrap: !isMobile,
+                                style: {
+                                  fontSize: isMobile ? '0.85rem' : '0.9rem',
+                                  whiteSpace: isMobile ? 'normal' : 'nowrap',
+                                },
+                              },
+
+                              secondary: {
+                                style: {
+                                  fontSize: isMobile ? '0.75rem' : '0.8rem',
+                                },
+                              },
+                            }}
+                          />
+                        </ListItemButton>
                       </ListItem>
                       <Divider />
                     </React.Fragment>

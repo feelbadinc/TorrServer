@@ -10,7 +10,6 @@ import { playlistTorrHost, streamHost, torrentsHost } from 'utils/Hosts'
 import { NoImageIcon } from 'icons'
 import DialogTorrentDetailsContent from 'components/DialogTorrentDetailsContent'
 import Dialog from '@mui/material/Dialog'
-import Slide from '@mui/material/Slide'
 import { Button, DialogActions, DialogTitle, useMediaQuery, useTheme } from '@mui/material'
 import axios from 'axios'
 import ptt from 'parse-torrent-title'
@@ -21,6 +20,7 @@ import useOnStandaloneAppOutsideClick from 'utils/useOnStandaloneAppOutsideClick
 import { GETTING_INFO, IN_DB, CLOSED, PRELOAD, WORKING } from 'torrentStates'
 import { TORRENT_CATEGORIES } from 'components/categories'
 import VideoPlayer from 'components/VideoPlayer'
+import Slide from '@mui/material/Slide'
 import { isFilePlayable } from 'components/DialogTorrentDetailsContent/helpers'
 
 import {
