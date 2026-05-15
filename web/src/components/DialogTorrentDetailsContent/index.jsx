@@ -86,6 +86,7 @@ export default function DialogTorrentDetailsContent({ closeDialog, torrent }) {
     const cacheLoaded = !!Object.entries(cache).length
     const torrentLoaded = stat !== GETTING_INFO && stat !== IN_DB
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (!cacheLoaded && !isLoading) setIsLoading(true)
     if (cacheLoaded && isLoading && torrentLoaded) setIsLoading(false)
   }, [stat, cache, isLoading])
