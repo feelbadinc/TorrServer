@@ -82,6 +82,7 @@ export default function SecondarySettingsComponent({ settings, inputForm }) {
   // Sync proxyHostsText with ProxyHosts when settings change
   useEffect(() => {
     const textValue = Array.isArray(ProxyHosts) ? ProxyHosts.join(', ') : ProxyHosts || ''
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setProxyHostsText(textValue)
   }, [ProxyHosts])
 

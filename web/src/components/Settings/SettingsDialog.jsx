@@ -89,6 +89,7 @@ export default function SettingsDialog({ handleClose }) {
   useEffect(() => {
     if (isNaN(CacheSize) || isNaN(ReaderReadAHead) || isNaN(PreloadCache)) return
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCacheSize(CacheSize)
     setCachePercentage(ReaderReadAHead)
     setPreloadCachePercentage(PreloadCache)

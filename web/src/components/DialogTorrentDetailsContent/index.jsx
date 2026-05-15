@@ -1,6 +1,6 @@
 import { NoImageIcon } from 'icons'
 import { humanizeSize, removeRedundantCharacters } from 'utils/Utils'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Button, ButtonGroup } from '@mui/material'
 import ptt from 'parse-torrent-title'
 import axios from 'axios'
@@ -42,7 +42,6 @@ export default function DialogTorrentDetailsContent({ closeDialog, torrent }) {
   const [isLoading, setIsLoading] = useState(true)
   const [isDetailedCacheView, setIsDetailedCacheView] = useState(false)
   const [viewedFileList, setViewedFileList] = useState()
-  const [playableFileList, setPlayableFileList] = useState()
   const [seasonAmount, setSeasonAmount] = useState(null)
   const [selectedSeason, setSelectedSeason] = useState()
   const [isSnakeDebugMode] = useState(JSON.parse(localStorage.getItem('isSnakeDebugMode')) || false)
@@ -65,6 +64,8 @@ export default function DialogTorrentDetailsContent({ closeDialog, torrent }) {
 
   const { Capacity, PiecesCount, PiecesLength, Filled } = cache
 
+  const playableFileList = useMemo(() => torrentFileList?.filter(({ path }) => isFilePlayable(path)), [torrentFileList])
+
   useEffect(() => {
     if (playableFileList && seasonAmount === null) {
       const seasons = []
@@ -78,10 +79,6 @@ export default function DialogTorrentDetailsContent({ closeDialog, torrent }) {
       setSeasonAmount(seasons.sort((a, b) => a - b))
     }
   }, [playableFileList, seasonAmount])
-
-  useEffect(() => {
-    setPlayableFileList(torrentFileList?.filter(({ path }) => isFilePlayable(path)))
-  }, [torrentFileList])
 
   useEffect(() => {
     const cacheLoaded = !!Object.entries(cache).length

@@ -1,6 +1,6 @@
 import { useMediaQuery } from '@mui/material'
 import { createTheme } from '@mui/material/styles'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { mainColors, themeColors } from './colors'
 
@@ -42,7 +42,6 @@ export const lightTheme = createTheme({
 export const useMaterialUITheme = () => {
   const savedThemeMode = localStorage.getItem('themeMode')
   const isSystemModeDark = useMediaQuery('(prefers-color-scheme: dark)')
-  const [isDarkMode, setIsDarkMode] = useState(savedThemeMode === 'dark' || isSystemModeDark)
   const [currentThemeMode, setCurrentThemeMode] = useState(savedThemeMode || THEME_MODES.AUTO)
 
   const updateThemeMode = mode => {
@@ -50,11 +49,8 @@ export const useMaterialUITheme = () => {
     localStorage.setItem('themeMode', mode)
   }
 
-  useEffect(() => {
-    currentThemeMode === THEME_MODES.LIGHT && setIsDarkMode(false)
-    currentThemeMode === THEME_MODES.DARK && setIsDarkMode(true)
-    currentThemeMode === THEME_MODES.AUTO && setIsDarkMode(isSystemModeDark)
-  }, [isSystemModeDark, currentThemeMode])
+  const isDarkMode =
+    currentThemeMode === THEME_MODES.DARK || (currentThemeMode === THEME_MODES.AUTO && isSystemModeDark)
 
   const theme = isDarkMode ? THEME_MODES.DARK : THEME_MODES.LIGHT
 

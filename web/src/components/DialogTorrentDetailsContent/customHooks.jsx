@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { cacheHost, settingsHost } from 'utils/Hosts'
 import axios from 'axios'
 
@@ -35,9 +35,7 @@ export const useUpdateCache = hash => {
 }
 
 export const useCreateCacheMap = cache => {
-  const [cacheMap, setCacheMap] = useState([])
-
-  useEffect(() => {
+  return useMemo(() => {
     const { PiecesCount, Pieces, Readers } = cache
 
     const map = []
@@ -54,10 +52,8 @@ export const useCreateCacheMap = cache => {
 
       map.push(newPiece)
     }
-    setCacheMap(map)
+    return map
   }, [cache])
-
-  return cacheMap
 }
 
 export const useGetSettings = cache => {

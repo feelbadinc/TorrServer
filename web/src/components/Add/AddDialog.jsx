@@ -47,7 +47,6 @@ export default function AddDialog({
   const [posterUrl, setPosterUrl] = useState(originalPoster || '')
   const [isPosterUrlCorrect, setIsPosterUrlCorrect] = useState(false)
   const [isTorrentSourceCorrect, setIsTorrentSourceCorrect] = useState(false)
-  const [isHashAlreadyExists, setIsHashAlreadyExists] = useState(false)
   const [posterList, setPosterList] = useState()
   const [isUserInteractedWithPoster, setIsUserInteractedWithPoster] = useState(isEditMode)
   const [currentLang] = useChangeLanguage()
@@ -69,11 +68,9 @@ export default function AddDialog({
     parseTorrent.remote(torrentSource, (_, { infoHash } = {}) => setCurrentSourceHash(infoHash))
   }, [torrentSource])
 
-  useEffect(() => {
-    if (!currentSourceHash || !torrents) return
-
-    const allHashes = torrents.map(({ hash }) => hash)
-    setIsHashAlreadyExists(allHashes.includes(currentSourceHash))
+  const isHashAlreadyExists = useMemo(() => {
+    if (!currentSourceHash || !torrents) return false
+    return torrents.map(({ hash }) => hash).includes(currentSourceHash)
   }, [currentSourceHash, torrents])
 
   useEffect(() => {
