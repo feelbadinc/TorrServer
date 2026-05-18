@@ -3,8 +3,8 @@ FROM --platform=$BUILDPLATFORM node:16-alpine AS front
 
 WORKDIR /app
 
-COPY ./web/package.json ./web/yarn.lock ./
-RUN yarn install
+COPY ./web/package.json ./web/yarn.lock ./web/.yarnrc.yml ./
+RUN corepack enable && yarn install
 
 # Build front once upon multiarch build
 COPY ./web .
@@ -16,7 +16,7 @@ RUN yarn run build
 FROM --platform=$BUILDPLATFORM golang:1.26.2-alpine AS builder
 
 COPY . /opt/src
-COPY --from=front /app/build /opt/src/web/build
+COPY --from=front /app/dist /opt/src/web/dist
 
 WORKDIR /opt/src
 
