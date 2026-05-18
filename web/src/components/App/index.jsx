@@ -48,13 +48,16 @@ export default function App() {
   const {
     data: torrents,
     isLoading,
-    isError: isOffline,
+    isError,
   } = useQuery({
     queryKey: ['torrents'],
     queryFn: getTorrents,
     retry: 0,
     refetchInterval: 1000,
   })
+  const [isOffline, setIsOffline] = useState(false)
+  if (isError && !isOffline) setIsOffline(true)
+  if (!isError && torrents !== undefined && isOffline) setIsOffline(false)
   const [sortABC, setSortABC] = useState(false)
   const handleClickSortABC = () => setSortABC(true)
   const handleClickSortDate = () => setSortABC(false)

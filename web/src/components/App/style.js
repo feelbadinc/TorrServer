@@ -35,6 +35,7 @@ export const AppWrapper = styled.div`
 `
 
 export const CenteredGrid = styled.div`
+  grid-area: content;
   display: grid;
   place-items: center;
 

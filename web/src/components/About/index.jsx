@@ -108,6 +108,14 @@ export default function AboutDialog() {
           </div>
 
           <FooterSection>
+            <a
+              href='https://lordicon.com/'
+              target='_blank'
+              rel='noreferrer'
+              style={{ fontSize: '0.75rem', color: 'inherit', opacity: 0.5, marginRight: 'auto' }}
+            >
+              Animated icons by Lordicon.com
+            </a>
             <Button onClick={onClose} color='primary' variant='contained'>
               {t('Close')}
             </Button>

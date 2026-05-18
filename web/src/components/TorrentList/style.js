@@ -23,11 +23,6 @@ export default styled.div`
       }
     `}
 
-    lord-icon {
-      width: 200px;
-      height: 200px;
-    }
-
     .icon-label {
       font-size: 20px;
     }
