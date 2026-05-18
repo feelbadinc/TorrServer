@@ -181,7 +181,7 @@ const Torrent = ({ torrent }) => {
         fullScreen={fullScreen}
         fullWidth
         maxWidth='xl'
-        TransitionComponent={Transition}
+        slots={{ transition: Transition }}
         ref={detailedInfoDialogRef}
       >
         <DialogTorrentDetailsContent closeDialog={closeDetailedInfo} torrent={torrent} />
