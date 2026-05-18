@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     open: true,
     proxy: {
-      '^/(?!@vite|@react-refresh|src|node_modules)([^.]+)$': 'http://localhost:8090',
+      '^/(?!@|src/|node_modules/)([^.]+)$': 'http://localhost:8090',
     },
   },
 })
